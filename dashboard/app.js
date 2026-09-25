@@ -4,8 +4,8 @@
 // le tableau de bord en temps quasi-réel.
 // ============================================================
 
+// In GitHub Pages: on utilise la relative path (le dépât est racine)
 const STATE_URL = 'portfolio_state.json';
-
 let chart = null;
 
 function fmtEUR(v) {
@@ -164,20 +164,10 @@ function stateToHistory(history, currentEquity) {
 
 async function loadState() {
     try {
-        // GitHub Pages : on ajoute le suffixe si nécessaire
-        let url = STATE_URL;
-        if (url.startsWith('http')) return;
-        // Fetch depuis le dépôt GitHub Pages
-        const res = await fetch(url);
-        if (!res.ok) {
-            // Fallback : chercher dans un sous-dossier
-            const altUrl = url.replace(/^/, 'data/');
-            const res2 = await fetch(altUrl);
-            if (res2.ok) {
-                return await res2.json();
-            }
-            throw new Error('HTTP ' + res.status);
-        }
+        // GitHub Pages sert le dashboard depuis la racine du dépôt,
+        // donc 'portfolio_state.json' est directement accessible
+        const res = await fetch(STATE_URL, { cache: 'no-store' });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
         return await res.json();
     } catch (err) {
         console.error('Failed to load state:', err);

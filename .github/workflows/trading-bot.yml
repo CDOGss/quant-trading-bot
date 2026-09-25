@@ -2,9 +2,9 @@
 # Trading Bot – Paper Trading (GitHub Actions)
 # ============================================================
 # Déclencheurs :
+#   - schedule : lun-ven 8h/10h/14h/16h CET
 #   - push sur main (re-test manuel)
-#   - schedule : tous les jours ouvrés (lun-ven) à 8h, 10h, 14h, 16h CET
-#     (les 5 sessions de trading de la séance Paris)
+#   - workflow_dispatch (manuel)
 # ============================================================
 
 name: Trading Bot
@@ -51,11 +51,27 @@ jobs:
       - name: "Run Trading Engine"
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: "gemini-3.8-flash"
+          GEMINI_THINKING_LEVEL: "high"
+          MAX_POSITION_SIZE: "25"
+          MIN_TRADE_SIZE: "100"
+          INITIAL_CAPITAL: "10000"
+          SKIP_GEMINI: "${{ github.event.inputs.mode == 'mock' || '' }}"
         working-directory: engine
         run: |
           python trader.py
 
       - name: "Git Commit & Push portfolio_state.json"
-        uses: actions/stage-and-commit@v1
-        with:
-          message: "📈 Trading update – ${{ github.ref }} (${10:1})"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "Trading Bot"
+          git config user.email "trading-bot@github.com"
+          TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M")
+          if git diff --quiet portfolio_state.json; then
+            echo "No changes to commit."
+          else
+            git add portfolio_state.json
+            git commit -m "📈 Trading update – $TIMESTAMP (auto)"
+            git push origin main
+          fi
