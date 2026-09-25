@@ -1,15 +1,165 @@
-﻿{
+{
   "initial_capital": 10000.0,
-  "cash": 10000.0,
-  "holdings": {},
+  "cash": 5000.09,
+  "holdings": {
+    "TTE.PA": {
+      "shares": 31.075,
+      "avg_price": 80.45,
+      "last_price": 80.45,
+      "market_value": 2499.98,
+      "pnl": 0.0,
+      "opened": "2026-09-25T07:30:57Z"
+    },
+    "SU.PA": {
+      "shares": 8.45,
+      "avg_price": 295.85,
+      "last_price": 295.85,
+      "market_value": 2499.93,
+      "pnl": 0.0,
+      "opened": "2026-09-25T07:30:57Z"
+    }
+  },
   "equity": 10000.0,
-  "trades": [],
+  "trades": [
+    {
+      "timestamp": "2026-09-25T07:30:57Z",
+      "ticker": "TTE.PA",
+      "action": "BUY",
+      "shares": 31.075,
+      "price": 80.45,
+      "amount": 2499.98,
+      "confidence": 0.88,
+      "reason": "Uptrend: RSI14 74.09 > 55, price above MA20, +1.042% today"
+    },
+    {
+      "timestamp": "2026-09-25T07:30:57Z",
+      "ticker": "SU.PA",
+      "action": "BUY",
+      "shares": 8.45,
+      "price": 295.85,
+      "amount": 2499.93,
+      "confidence": 0.5,
+      "reason": "Uptrend: RSI14 55.14 > 55, price above MA20, +0.852% today"
+    }
+  ],
   "history": [
     {
       "timestamp": "2026-01-01T00:00:00Z",
       "equity": 10000.0,
       "cash": 10000.0
+    },
+    {
+      "timestamp": "2026-09-25T07:30:57Z",
+      "equity": 10000.0,
+      "cash": 5000.09
     }
   ],
-  "updated": "2026-01-01T00:00:00Z"
+  "updated": "2026-09-25T07:30:57Z",
+  "market_source": "yfinance",
+  "decision_engine": "rules",
+  "last_decisions": {
+    "timestamp": "2026-09-25T07:30:57Z",
+    "strategy": "Rule-based trend following (RSI14 + MA20)",
+    "risk_check": "Max 25% of equity per position",
+    "decisions": [
+      {
+        "ticker": "CAC.PA",
+        "action": "HOLD",
+        "confidence": 0.5,
+        "reason": "No clear signal (RSI14 41.14)",
+        "max_position_pct": 25
+      },
+      {
+        "ticker": "MC.PA",
+        "action": "HOLD",
+        "confidence": 0.5,
+        "reason": "No clear signal (RSI14 30.4)",
+        "max_position_pct": 25
+      },
+      {
+        "ticker": "TTE.PA",
+        "action": "BUY",
+        "confidence": 0.88,
+        "reason": "Uptrend: RSI14 74.09 > 55, price above MA20, +1.042% today",
+        "max_position_pct": 25
+      },
+      {
+        "ticker": "AIR.PA",
+        "action": "HOLD",
+        "confidence": 0.5,
+        "reason": "No clear signal (RSI14 36.16)",
+        "max_position_pct": 25
+      },
+      {
+        "ticker": "OR.PA",
+        "action": "HOLD",
+        "confidence": 0.5,
+        "reason": "No clear signal (RSI14 50.04)",
+        "max_position_pct": 25
+      },
+      {
+        "ticker": "BNP.PA",
+        "action": "HOLD",
+        "confidence": 0.5,
+        "reason": "No clear signal (RSI14 42.48)",
+        "max_position_pct": 25
+      },
+      {
+        "ticker": "SAN.PA",
+        "action": "HOLD",
+        "confidence": 0.5,
+        "reason": "No clear signal (RSI14 31.18)",
+        "max_position_pct": 25
+      },
+      {
+        "ticker": "SU.PA",
+        "action": "BUY",
+        "confidence": 0.5,
+        "reason": "Uptrend: RSI14 55.14 > 55, price above MA20, +0.852% today",
+        "max_position_pct": 25
+      }
+    ]
+  },
+  "prices": {
+    "CAC.PA": {
+      "last": 82.26,
+      "ret1d": 0.158,
+      "rsi14": 41.14
+    },
+    "MC.PA": {
+      "last": 398.8,
+      "ret1d": 0.479,
+      "rsi14": 30.4
+    },
+    "TTE.PA": {
+      "last": 80.45,
+      "ret1d": 1.042,
+      "rsi14": 74.09
+    },
+    "AIR.PA": {
+      "last": 192.1,
+      "ret1d": -1.497,
+      "rsi14": 36.16
+    },
+    "OR.PA": {
+      "last": 383.95,
+      "ret1d": 0.907,
+      "rsi14": 50.04
+    },
+    "BNP.PA": {
+      "last": 99.02,
+      "ret1d": 2.114,
+      "rsi14": 42.48
+    },
+    "SAN.PA": {
+      "last": 71.72,
+      "ret1d": -1.901,
+      "rsi14": 31.18
+    },
+    "SU.PA": {
+      "last": 295.85,
+      "ret1d": 0.852,
+      "rsi14": 55.14
+    }
+  }
 }
