@@ -1,0 +1,15 @@
+﻿{
+  "initial_capital": 10000.0,
+  "cash": 10000.0,
+  "holdings": {},
+  "equity": 10000.0,
+  "trades": [],
+  "history": [
+    {
+      "timestamp": "2026-01-01T00:00:00Z",
+      "equity": 10000.0,
+      "cash": 10000.0
+    }
+  ],
+  "updated": "2026-01-01T00:00:00Z"
+}
