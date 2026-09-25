@@ -11,8 +11,10 @@
         <header class="header">
             <div class="logo">
                 <span class="icon">📈</span>
+                <div>
                 <h1>Trading Bot</h1>
                 <p class="subtitle">Paper Trading CAC40 – Gemini 3.8 Flash</p>
+                </div>
             </div>
             <div class="status" id="status">
                 <span class="dot" id="status-dot"></span>
@@ -31,7 +33,7 @@
                 <p class="value roi" id="roi">—</p>
             </div>
             <div class="stat-card">
-                <h3>Trades</h3>
+                <h3>Trades · Positions</h3>
                 <p class="value" id="trades-count">—</p>
             </div>
             <div class="stat-card">
@@ -54,10 +56,31 @@
                     <thead>
                         <tr>
                             <th>Ticker</th>
-                            <th>Shares</th>
+                            <th>Qté</th>
                             <th>Prix avg</th>
-                            <th>Mkt Value</th>
+                            <th>Valeur</th>
                             <th>P&L</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="trades">
+            <h2>Dernières décisions <span class="engine" id="engine"></span></h2>
+            <p class="strategy" id="strategy"></p>
+            <div class="trades-table">
+                <table id="decisions-table">
+                    <thead>
+                        <tr>
+                            <th>Ticker</th>
+                            <th>Cours</th>
+                            <th>Var. 1j</th>
+                            <th>RSI14</th>
+                            <th>Décision</th>
+                            <th>Confiance</th>
+                            <th>Raison</th>
                         </tr>
                     </thead>
                     <tbody></tbody>
@@ -74,10 +97,10 @@
                             <th>Heure</th>
                             <th>Ticker</th>
                             <th>Action</th>
-                            <th>Shares</th>
+                            <th>Qté</th>
                             <th>Prix</th>
-                            <th>Confidence</th>
-                            <th>Reason</th>
+                            <th>Confiance</th>
+                            <th>Raison</th>
                         </tr>
                     </thead>
                     <tbody></tbody>

@@ -2,32 +2,37 @@
 # Trading Bot – Paper Trading (GitHub Actions)
 # ============================================================
 # Déclencheurs :
-#   - schedule : lun-ven 8h/10h/14h/16h CET
-#   - push sur master (re-test manuel)
-#   - workflow_dispatch (manuel)
+#   - schedule : lun-ven 8h/10h/12h/14h UTC (= 10h/12h/14h/16h Paris en été,
+#                9h/11h/13h/15h en hiver) – pendant la séance Euronext
+#   - push sur master touchant engine/ (re-test)
+#   - workflow_dispatch (manuel, onglet Actions)
+# Après chaque exécution, pages.yml redéploie le dashboard (workflow_run).
 # ============================================================
 
 name: Trading Bot
 
 on:
   schedule:
-    # 2h de décalage pour couvrir les heures de trading
-    - cron: '0 8,10,14,16 * * 1-5'
+    - cron: '0 8,10,12,14 * * 1-5'
   push:
     branches: [master]
+    paths:
+      - 'engine/**'
+      - '.github/workflows/trading-bot.yml'
   workflow_dispatch:
     inputs:
       mode:
-        description: 'Mode: auto ou mock'
-        required: true
-        default: 'auto'
+        description: 'auto = Gemini si GEMINI_API_KEY est défini, rules = règles techniques'
+        type: choice
+        options: [auto, rules]
+        default: auto
 
-env:
-  GEMINI_MODEL: "gemini-3.8-flash"
-  GEMINI_THINKING_LEVEL: "high"
-  MAX_POSITION_SIZE: "25"
-  MIN_TRADE_SIZE: "100"
-  INITIAL_CAPITAL: "10000"
+permissions:
+  contents: write
+
+concurrency:
+  group: trading-bot
+  cancel-in-progress: false
 
 jobs:
   trade:
@@ -42,41 +47,43 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+          cache: pip
+          cache-dependency-path: engine/requirements.txt
 
       - name: "Install dependencies"
         run: |
           python -m pip install --upgrade pip
           pip install -r engine/requirements.txt
 
+      - name: "Self-test (mock Gemini)"
+        working-directory: engine
+        run: python _test_gemini.py
+
       - name: "Run Trading Engine"
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          GEMINI_MODEL: "gemini-3.8-flash"
-          GEMINI_THINKING_LEVEL: "high"
-          MAX_POSITION_SIZE: "25"
-          MIN_TRADE_SIZE: "100"
-          INITIAL_CAPITAL: "10000"
-          SKIP_GEMINI: "${{ github.event.inputs.mode == 'mock' || '' }}"
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-3.8-flash' }}
+          GEMINI_THINKING_LEVEL: ${{ vars.GEMINI_THINKING_LEVEL || 'high' }}
+          MAX_POSITION_SIZE: ${{ vars.MAX_POSITION_SIZE || '25' }}
+          MIN_TRADE_SIZE: ${{ vars.MIN_TRADE_SIZE || '100' }}
+          INITIAL_CAPITAL: ${{ vars.INITIAL_CAPITAL || '10000' }}
+          ASK_BASKET: ${{ vars.ASK_BASKET }}
+          SKIP_GEMINI: ${{ github.event.inputs.mode == 'rules' && 'true' || '' }}
         working-directory: engine
-        run: |
-          python trader.py
-      - name: "Build .gh-pages for GitHub Pages"
-        run: |
-          mkdir -p .gh-pages
-          cp -r dashboard/* .gh-pages/
-          cp portfolio_state.json .gh-pages/
+        run: python trader.py
 
-      - name: "Git Commit & Push portfolio_state.json"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: "Commit & push portfolio_state.json"
         run: |
           git config user.name "Trading Bot"
-          git config user.email "trading-bot@github.com"
-          TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M")
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           if git diff --quiet portfolio_state.json; then
             echo "No changes to commit."
-          else
-            git add portfolio_state.json
-            git commit -m "📈 Trading update – $TIMESTAMP (auto)"
-            git push origin master
+            exit 0
           fi
+          git add portfolio_state.json
+          git commit -m "📈 Trading update – $(date -u +'%Y-%m-%d %H:%M') UTC"
+          for i in 1 2 3; do
+            git pull --rebase origin master && git push origin HEAD:master && exit 0
+            sleep 5
+          done
+          exit 1

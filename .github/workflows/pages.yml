@@ -1,21 +1,50 @@
-# Deploy static dashboard to GitHub Pages on every push to master
+# Déploie le dashboard statique (dashboard/ + portfolio_state.json) sur GitHub Pages :
+#   - à chaque push sur master touchant le dashboard ou l'état
+#   - après chaque exécution du Trading Bot (ses commits, poussés avec
+#     GITHUB_TOKEN, ne déclenchent pas d'événement push)
+#   - manuellement
 name: Pages Deploy
 
 on:
   push:
     branches: [master]
+    paths:
+      - 'dashboard/**'
+      - 'portfolio_state.json'
+      - '.github/workflows/pages.yml'
+  workflow_run:
+    workflows: ["Trading Bot"]
+    types: [completed]
+  workflow_dispatch:
 
 permissions:
+  contents: read
   pages: write
   id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: master
 
-      - uses: actions/configure-pages@v3
+      - name: Build site
+        run: |
+          mkdir -p .gh-pages
+          cp -r dashboard/* .gh-pages/
+          cp portfolio_state.json .gh-pages/
+          touch .gh-pages/.nojekyll
+
+      - uses: actions/configure-pages@v5
 
       - uses: actions/upload-pages-artifact@v3
         with:

@@ -1,48 +1,66 @@
 # -*- coding: utf-8 -*-
-"""Test le chemin Gemini avec un mock du SDK, sans clé réelle."""
+"""Test le chemin Gemini (SDK google-genai mocké) et l'exécution des ordres, sans clé réelle."""
 import sys
 import types
 import json
 import os
 
-google_pkg  = types.ModuleType('google')
-genai_mod   = types.ModuleType('google.generative_ai')
-client_mod  = types.ModuleType('google.generative_ai.client')
+google_pkg = types.ModuleType('google')
+genai_mod  = types.ModuleType('google.genai')
+types_mod  = types.ModuleType('google.genai.types')
 sys.modules['google'] = google_pkg
-sys.modules['google.generative_ai'] = genai_mod
-sys.modules['google.generative_ai.client'] = client_mod
+sys.modules['google.genai'] = genai_mod
+sys.modules['google.genai.types'] = types_mod
+google_pkg.genai = genai_mod
+genai_mod.types = types_mod
 
-class MockResp:
-    def __init__(self, text):
-        self.text = text
-
-class MockClient:
+class _Cfg:
     def __init__(self, **kwargs):
-        pass
-    def generate_text(self, prompt, **kwargs):
-        return MockResp(json.dumps({
+        self.__dict__.update(kwargs)
+
+types_mod.GenerateContentConfig = _Cfg
+types_mod.ThinkingConfig = _Cfg
+
+class MockModels:
+    def generate_content(self, model, contents, config):
+        assert config.system_instruction, "system prompt missing"
+        assert config.thinking_config.thinking_level == "high"
+        assert "MC.PA" in contents, "market data missing from prompt"
+        return types.SimpleNamespace(text="```json\n" + json.dumps({
             "decisions": [
-                {"ticker": "6C40", "action": "BUY", "confidence": 0.9,
+                {"ticker": "CAC.PA", "action": "BUY", "confidence": 0.9,
                  "reason": "Strong uptrend", "max_position_pct": 25},
-                {"ticker": "AX.P", "action": "BUY", "confidence": 0.7,
-                 "reason": "Breaking above MA50", "max_position_pct": 25}
+                {"ticker": "MC.PA", "action": "BUY", "confidence": 0.7,
+                 "reason": "Breaking above MA50", "max_position_pct": 80},
             ],
             "portfolio_strategy": "Aggressive buy",
             "risk_check": "OK"
-        }))
+        }) + "\n```")
 
-genai_mod.client = client_mod
-client_mod.GenerativeAIClient = MockClient
+class MockClient:
+    def __init__(self, **kwargs):
+        self.models = MockModels()
+
+genai_mod.Client = MockClient
 os.environ['GEMINI_API_KEY'] = 'mock-key'
 
 import trader
-result = trader.ask_gemini(
-    trader.build_system_prompt(),
-    trader.build_user_prompt(
-        {"6C40": [100.0, 102.0, 105.0],
-         "AX.P": [90.0, 92.0, 95.0]},
-        {}, 10000.0, 10000.0,
-        "gemini-3.8-flash", "high")
-)
-print("Gemini API path OK:", result.get("portfolio_strategy"))
-print("Decisions:", len(result.get("decisions", [])))
+
+closes = [100.0 + i * 0.5 for i in range(250)]
+markets = {"CAC.PA": closes, "MC.PA": [c * 4 for c in closes]}
+state = {"cash": 10000.0, "equity": 10000.0, "holdings": {}}
+
+decisions, engine = trader.get_decisions(markets, state)
+assert engine == trader.GEMINI_MODEL, engine
+print("Gemini API path OK:", decisions.get("portfolio_strategy"))
+
+trades = trader.execute_orders(state, decisions, {s: p[-1] for s, p in markets.items()})
+assert len(trades) == 2
+# max_position_pct=80 doit être plafonné à MAX_POSITION_SIZE
+assert all(t["amount"] <= 10000 * trader.MAX_POSITION_SIZE / 100 for t in trades)
+trader.mark_to_market(state, {s: p[-1] for s, p in markets.items()})
+assert abs(state["equity"] - 10000.0) < 1, state["equity"]
+print("Orders OK:", [(t["ticker"], t["amount"]) for t in trades], "cash", state["cash"])
+
+rules = trader.rule_based_decisions(markets, {})
+print("Rule-based OK:", [(d["ticker"], d["action"]) for d in rules["decisions"]])
