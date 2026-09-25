@@ -7,7 +7,7 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│  GitHub Actions (Cron : lun-ven 8h/10h/12h/14h UTC)                    │
+│  GitHub Actions (Cron : lun-ven 8h17/10h17/12h17/14h17 UTC)            │
 │  ┌──────────────┐  ┌────────────────────────────┐  ┌──────────────┐   │
 │  │  1. Fetch    │  │  2. Gemini 3.8 Flash      │  │  3. Update   │   │
 │  │ Yahoo Finance│  │  (Thinking level: high)    │  │  State + Git  │   │
@@ -102,7 +102,7 @@ Les symboles (suffixe `.PA` = Euronext Paris) :
 1. Settings → Pages → Source : **GitHub Actions**
 2. (Optionnel) ajouter le secret `GEMINI_API_KEY`
 3. Push sur `master` → `pages.yml` publie le dashboard
-4. `trading-bot.yml` tourne au schedule (ou manuellement : Actions → Trading Bot → Run workflow),
+4. `trading-bot.yml` tourne au schedule (lun-ven à 8h17/10h17/12h17/14h17 UTC) (ou manuellement : Actions → Trading Bot → Run workflow),
    commite `portfolio_state.json`, puis `pages.yml` redéploie automatiquement (`workflow_run`)
 
 ## ⚠️ Avertissement

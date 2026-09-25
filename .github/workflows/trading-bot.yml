@@ -2,8 +2,10 @@
 # Trading Bot – Paper Trading (GitHub Actions)
 # ============================================================
 # Déclencheurs :
-#   - schedule : lun-ven 8h/10h/12h/14h UTC (= 10h/12h/14h/16h Paris en été,
-#                9h/11h/13h/15h en hiver) – pendant la séance Euronext
+#   - schedule : lun-ven 8h17/10h17/12h17/14h17 UTC (= 10h17/12h17/14h17/16h17
+#                Paris en été, 9h17/11h17/13h17/15h17 en hiver). Minute 17 et non
+#                :00 (heure pile = pic de charge GitHub, crons retardés ou sautés).
+#                Toujours pendant la séance Euronext.
 #   - push sur master touchant engine/ (re-test)
 #   - workflow_dispatch (manuel, onglet Actions)
 # Après chaque exécution, pages.yml redéploie le dashboard (workflow_run).
@@ -13,7 +15,7 @@ name: Trading Bot
 
 on:
   schedule:
-    - cron: '0 8,10,12,14 * * 1-5'
+    - cron: '17 8,10,12,14 * * 1-5'
   push:
     branches: [master]
     paths:
