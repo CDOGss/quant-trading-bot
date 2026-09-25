@@ -1,0 +1,61 @@
+# ============================================================
+# Trading Bot – Paper Trading (GitHub Actions)
+# ============================================================
+# Déclencheurs :
+#   - push sur main (re-test manuel)
+#   - schedule : tous les jours ouvrés (lun-ven) à 8h, 10h, 14h, 16h CET
+#     (les 5 sessions de trading de la séance Paris)
+# ============================================================
+
+name: Trading Bot
+
+on:
+  schedule:
+    # 2h de décalage pour couvrir les heures de trading
+    - cron: '0 8,10,14,16 * * 1-5'
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Mode: auto ou mock'
+        required: true
+        default: 'auto'
+
+env:
+  GEMINI_MODEL: "gemini-3.8-flash"
+  GEMINI_THINKING_LEVEL: "high"
+  MAX_POSITION_SIZE: "25"
+  MIN_TRADE_SIZE: "100"
+  INITIAL_CAPITAL: "10000"
+
+jobs:
+  trade:
+    name: "Execute Trading Decision"
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v4
+
+      - name: "Set up Python 3.11"
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: "Install dependencies"
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r engine/requirements.txt
+
+      - name: "Run Trading Engine"
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        working-directory: engine
+        run: |
+          python trader.py
+
+      - name: "Git Commit & Push portfolio_state.json"
+        uses: actions/stage-and-commit@v1
+        with:
+          message: "📈 Trading update – ${{ github.ref }} (${10:1})"

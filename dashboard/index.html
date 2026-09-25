@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trading Bot – Paper Trading CAC40</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <span class="icon">📈</span>
+                <h1>Trading Bot</h1>
+                <p class="subtitle">Paper Trading CAC40 – Gemini 3.8 Flash</p>
+            </div>
+            <div class="status" id="status">
+                <span class="dot" id="status-dot"></span>
+                <span id="status-text">Chargement…</span>
+                <span class="timestamp" id="timestamp">—</span>
+            </div>
+        </header>
+
+        <section class="stats">
+            <div class="stat-card">
+                <h3>Capital</h3>
+                <p class="value" id="equity">—</p>
+            </div>
+            <div class="stat-card">
+                <h3>ROI</h3>
+                <p class="value roi" id="roi">—</p>
+            </div>
+            <div class="stat-card">
+                <h3>Trades</h3>
+                <p class="value" id="trades-count">—</p>
+            </div>
+            <div class="stat-card">
+                <h3>Cash</h3>
+                <p class="value" id="cash">—</p>
+            </div>
+        </section>
+
+        <section class="chart">
+            <h2>Evolution du capital</h2>
+            <div class="chart-box">
+                <canvas id="capitalChart"></canvas>
+            </div>
+        </section>
+
+        <section class="positions">
+            <h2>Positions ouvertes</h2>
+            <div class="positions-table">
+                <table id="positions-table">
+                    <thead>
+                        <tr>
+                            <th>Ticker</th>
+                            <th>Shares</th>
+                            <th>Prix avg</th>
+                            <th>Mkt Value</th>
+                            <th>P&L</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="trades">
+            <h2>Derniers trades</h2>
+            <div class="trades-table">
+                <table id="trades-table">
+                    <thead>
+                        <tr>
+                            <th>Heure</th>
+                            <th>Ticker</th>
+                            <th>Action</th>
+                            <th>Shares</th>
+                            <th>Prix</th>
+                            <th>Confidence</th>
+                            <th>Reason</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </section>
+
+        <footer>
+            <p>Paper Trading – Aucun argent réel engagé. Données: Yahoo Finance. IA: Gemini 3.8 Flash.</p>
+        </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

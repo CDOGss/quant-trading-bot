@@ -1,0 +1,6 @@
+# Engine: Trading Bot (Python)
+yfinance>=1.4.1
+requests>=2.32.0
+google-generative-ai>=0.4.0
+pandas>=2.0.0
+numpy>=1.26.0
