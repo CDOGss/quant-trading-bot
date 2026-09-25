@@ -1,9 +1,9 @@
-# Deploy static dashboard to GitHub Pages on every push to main
+# Deploy static dashboard to GitHub Pages on every push to master
 name: Pages Deploy
 
 on:
   push:
-    branches: [main]
+    branches: [master]
 
 permissions:
   pages: write

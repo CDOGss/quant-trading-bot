@@ -3,7 +3,7 @@
 # ============================================================
 # Déclencheurs :
 #   - schedule : lun-ven 8h/10h/14h/16h CET
-#   - push sur main (re-test manuel)
+#   - push sur master (re-test manuel)
 #   - workflow_dispatch (manuel)
 # ============================================================
 
@@ -14,7 +14,7 @@ on:
     # 2h de décalage pour couvrir les heures de trading
     - cron: '0 8,10,14,16 * * 1-5'
   push:
-    branches: [main]
+    branches: [master]
   workflow_dispatch:
     inputs:
       mode:
@@ -60,6 +60,11 @@ jobs:
         working-directory: engine
         run: |
           python trader.py
+      - name: "Build .gh-pages for GitHub Pages"
+        run: |
+          mkdir -p .gh-pages
+          cp -r dashboard/* .gh-pages/
+          cp portfolio_state.json .gh-pages/
 
       - name: "Git Commit & Push portfolio_state.json"
         env:
@@ -73,5 +78,5 @@ jobs:
           else
             git add portfolio_state.json
             git commit -m "📈 Trading update – $TIMESTAMP (auto)"
-            git push origin main
+            git push origin master
           fi
