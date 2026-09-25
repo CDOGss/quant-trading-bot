@@ -5,21 +5,21 @@
     "TTE.PA": {
       "shares": 31.075,
       "avg_price": 80.45,
-      "last_price": 80.37,
-      "market_value": 2497.5,
-      "pnl": -2.49,
+      "last_price": 80.25,
+      "market_value": 2493.77,
+      "pnl": -6.22,
       "opened": "2026-09-25T07:30:57Z"
     },
     "SU.PA": {
       "shares": 8.45,
       "avg_price": 295.85,
-      "last_price": 295.05,
-      "market_value": 2493.17,
-      "pnl": -6.76,
+      "last_price": 295.0,
+      "market_value": 2492.75,
+      "pnl": -7.18,
       "opened": "2026-09-25T07:30:57Z"
     }
   },
-  "equity": 9990.76,
+  "equity": 9986.61,
   "trades": [
     {
       "timestamp": "2026-09-25T07:30:57Z",
@@ -57,114 +57,119 @@
       "timestamp": "2026-09-25T07:52:25Z",
       "equity": 9990.76,
       "cash": 5000.09
+    },
+    {
+      "timestamp": "2026-09-25T07:57:25Z",
+      "equity": 9986.61,
+      "cash": 5000.09
     }
   ],
-  "updated": "2026-09-25T07:52:25Z",
+  "updated": "2026-09-25T07:57:25Z",
   "market_source": "yfinance",
-  "decision_engine": "rules (gemini error)",
+  "decision_engine": "gemini-3.8-flash",
   "last_decisions": {
-    "timestamp": "2026-09-25T07:52:25Z",
-    "strategy": "Rule-based trend following (RSI14 + MA20)",
-    "risk_check": "Max 25% of equity per position",
+    "timestamp": "2026-09-25T07:57:25Z",
+    "strategy": "Maintain existing long exposure in TTE.PA and SU.PA while preserving 50% cash liquidity amid weak broader index conditions.",
+    "risk_check": "Both active positions respect the 25% single-ticker exposure ceiling, with substantial cash cushion safeguarding against market drawdowns.",
     "decisions": [
       {
         "ticker": "CAC.PA",
         "action": "HOLD",
-        "confidence": 0.5,
-        "reason": "No clear signal (RSI14 39.65)",
+        "confidence": 0.8,
+        "reason": "Index trades below the 20-day and 50-day moving averages with weak RSI, warranting no new long exposure.",
         "max_position_pct": 25
       },
       {
         "ticker": "MC.PA",
         "action": "HOLD",
-        "confidence": 0.5,
-        "reason": "No clear signal (RSI14 29.54)",
+        "confidence": 0.85,
+        "reason": "Pronounced downtrend across all major moving averages with sub-30 RSI advises staying sidelined.",
         "max_position_pct": 25
       },
       {
         "ticker": "TTE.PA",
         "action": "HOLD",
-        "confidence": 0.5,
-        "reason": "No clear signal (RSI14 73.85)",
+        "confidence": 0.75,
+        "reason": "Strong uptrend above all major moving averages continues, maintaining full existing position.",
         "max_position_pct": 25
       },
       {
         "ticker": "AIR.PA",
         "action": "HOLD",
-        "confidence": 0.5,
-        "reason": "No clear signal (RSI14 34.51)",
+        "confidence": 0.85,
+        "reason": "Negative daily return and RSI well below 45 indicate ongoing downward momentum.",
         "max_position_pct": 25
       },
       {
         "ticker": "OR.PA",
         "action": "HOLD",
-        "confidence": 0.5,
-        "reason": "No clear signal (RSI14 49.59)",
+        "confidence": 0.7,
+        "reason": "Neutral consolidation with RSI near 50 and price hovering around the 20-day moving average.",
         "max_position_pct": 25
       },
       {
         "ticker": "BNP.PA",
         "action": "HOLD",
-        "confidence": 0.5,
-        "reason": "No clear signal (RSI14 44.12)",
+        "confidence": 0.75,
+        "reason": "Recent bounce is capped beneath the 50-day MA with RSI below 45, suggesting insufficient upside momentum.",
         "max_position_pct": 25
       },
       {
         "ticker": "SAN.PA",
         "action": "HOLD",
-        "confidence": 0.5,
-        "reason": "No clear signal (RSI14 31.46)",
+        "confidence": 0.85,
+        "reason": "Consistent multi-week downtrend beneath all key MAs justifies avoiding new entry.",
         "max_position_pct": 25
       },
       {
         "ticker": "SU.PA",
         "action": "HOLD",
-        "confidence": 0.5,
-        "reason": "No clear signal (RSI14 54.67)",
+        "confidence": 0.75,
+        "reason": "Price remains above 20-day and 50-day moving averages with positive weekly momentum, supporting existing holding.",
         "max_position_pct": 25
       }
     ]
   },
   "prices": {
     "CAC.PA": {
-      "last": 82.05,
-      "ret1d": -0.097,
-      "rsi14": 39.65
+      "last": 82.04,
+      "ret1d": -0.11,
+      "rsi14": 39.59
     },
     "MC.PA": {
-      "last": 397.85,
-      "ret1d": 0.239,
-      "rsi14": 29.54
+      "last": 398.25,
+      "ret1d": 0.34,
+      "rsi14": 29.9
     },
     "TTE.PA": {
-      "last": 80.37,
-      "ret1d": 0.942,
-      "rsi14": 73.85
+      "last": 80.25,
+      "ret1d": 0.791,
+      "rsi14": 73.5
     },
     "AIR.PA": {
-      "last": 190.92,
-      "ret1d": -2.102,
-      "rsi14": 34.51
+      "last": 190.9,
+      "ret1d": -2.113,
+      "rsi14": 34.49
     },
     "OR.PA": {
-      "last": 383.4,
-      "ret1d": 0.762,
-      "rsi14": 49.59
+      "last": 383.45,
+      "ret1d": 0.775,
+      "rsi14": 49.63
     },
     "BNP.PA": {
-      "last": 99.44,
-      "ret1d": 2.547,
-      "rsi14": 44.12
+      "last": 99.35,
+      "ret1d": 2.454,
+      "rsi14": 43.78
     },
     "SAN.PA": {
-      "last": 71.83,
-      "ret1d": -1.751,
-      "rsi14": 31.46
+      "last": 71.81,
+      "ret1d": -1.778,
+      "rsi14": 31.41
     },
     "SU.PA": {
-      "last": 295.05,
-      "ret1d": 0.58,
-      "rsi14": 54.67
+      "last": 295.0,
+      "ret1d": 0.562,
+      "rsi14": 54.64
     }
   }
 }
