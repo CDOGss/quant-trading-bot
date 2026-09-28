@@ -2,10 +2,11 @@
 # Trading Bot – Paper Trading (GitHub Actions)
 # ============================================================
 # Déclencheurs :
-#   - schedule : lun-ven 8h17/10h17/12h17/14h17 UTC (= 10h17/12h17/14h17/16h17
-#                Paris en été, 9h17/11h17/13h17/15h17 en hiver). Minute 17 et non
-#                :00 (heure pile = pic de charge GitHub, crons retardés ou sautés).
-#                Toujours pendant la séance Euronext.
+#   - workflow_dispatch par cron-job.org : déclencheur PRINCIPAL, lun-ven
+#                10h17/12h17/14h17/16h17 heure de Paris (voir docs/declenchement-externe.md)
+#   - schedule : SECOURS seulement (le cron GitHub partait avec ~5 h de retard en
+#                sept. 2026). trader.py (RUN_MODE=secours) ne trade que si aucun
+#                passage depuis 150 min, et jamais hors séance ni jour férié.
 #   - push sur master touchant engine/ (re-test)
 #   - workflow_dispatch (manuel, onglet Actions)
 # Après chaque exécution, pages.yml redéploie le dashboard (workflow_run).
@@ -15,7 +16,7 @@ name: Trading Bot
 
 on:
   schedule:
-    - cron: '17 8,10,12,14 * * 1-5'
+    - cron: '47 8,10,12,14 * * 1-5'
   push:
     branches: [master]
     paths:
@@ -71,6 +72,7 @@ jobs:
           INITIAL_CAPITAL: ${{ vars.INITIAL_CAPITAL || '10000' }}
           ASK_BASKET: ${{ vars.ASK_BASKET }}
           SKIP_GEMINI: ${{ github.event.inputs.mode == 'rules' && 'true' || '' }}
+          RUN_MODE: ${{ github.event_name == 'schedule' && 'secours' || 'principal' }}
         working-directory: engine
         run: python trader.py
 

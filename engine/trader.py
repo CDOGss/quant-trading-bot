@@ -20,6 +20,9 @@ Env (secrets / variables GitHub) :
   ASK_BASKET              – symboles Yahoo séparés par ";" (défaut: voir DEFAULT_BASKET)
   SKIP_GEMINI=true        – force les règles techniques (pas d'appel Gemini)
   MOCK_MARKET=true        – prix aléatoires (test hors-ligne uniquement)
+  RUN_MODE                – principal (défaut, cron-job.org / manuel) | secours
+                            (cron GitHub : ne tourne que si un créneau a été manqué)
+  FORCE_RUN=1             – ignore les garde-fous de calendrier et d'espacement
 """
 
 import json
@@ -27,8 +30,73 @@ import math
 import os
 import re
 import sys
-from datetime import datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
+from zoneinfo import ZoneInfo
+
+# ---------------------------------------------------------------------------
+# Calendrier Euronext Paris et garde-fous de déclenchement
+# ---------------------------------------------------------------------------
+# Déclencheur principal : cron-job.org (workflow_dispatch à 10h17, 12h17, 14h17,
+# 16h17 Paris). Le cron GitHub, qui partait avec ~5 h de retard (sept. 2026),
+# n'est plus qu'un secours. Sans ces gardes, un secours en retard tradait après
+# la clôture (18h34 UTC le 25/09) ou en doublon.
+
+PARIS = ZoneInfo("Europe/Paris")
+OUVERTURE, CLOTURE = (9, 0), (17, 35)     # séance 09:00-17:30, marge de 5 min
+ESPACEMENT_MIN = 75                       # minutes entre deux passages principaux
+ESPACEMENT_SECOURS_MIN = 150              # le secours n'agit que si un créneau a sauté
+FERIES_FIXES = {(1, 1), (5, 1), (12, 25), (12, 26)}  # hors week-end
+
+
+def paques(annee):
+    a, b, c = annee % 19, annee // 100, annee % 100
+    d, e = b // 4, b % 4
+    f = (b + 8) // 25
+    g = (b - f + 1) // 3
+    h = (19 * a + b - d - g + 15) % 30
+    i, k = c // 4, c % 4
+    l = (32 + 2 * e + 2 * i - h - k) % 7
+    m = (a + 11 * h + 22 * l) // 451
+    mois = (h + l - 7 * m + 114) // 31
+    jour = (h + l - 7 * m + 114) % 31 + 1
+    return date(annee, mois, jour)
+
+
+def jour_ferme_euronext(j):
+    """Euronext Paris (actions) : fermé le week-end, 1er janv., Vendredi saint,
+    lundi de Pâques, 1er mai, 25 et 26 déc."""
+    if j.weekday() >= 5:
+        return "week-end"
+    if (j.month, j.day) in FERIES_FIXES:
+        return "jour férié"
+    p = paques(j.year)
+    if j in (p - timedelta(days=2), p + timedelta(days=1)):
+        return "jour férié"
+    return None
+
+
+def motif_de_ne_pas_trader(state, maintenant=None, mode="principal"):
+    """Renvoie un motif (str) si ce passage ne doit rien faire, None sinon."""
+    maintenant = maintenant or datetime.now(timezone.utc)
+    local = maintenant.astimezone(PARIS)
+    ferme = jour_ferme_euronext(local.date())
+    if ferme:
+        return f"marché fermé ({ferme})"
+    hm = (local.hour, local.minute)
+    if hm < OUVERTURE or hm > CLOTURE:
+        return f"hors séance ({local:%Hh%M} Paris)"
+    dernier = (state.get("last_decisions") or {}).get("timestamp")
+    if dernier:
+        try:
+            ecart = (maintenant - datetime.fromisoformat(dernier.replace("Z", "+00:00"))).total_seconds() / 60
+        except ValueError:
+            ecart = None
+        seuil = ESPACEMENT_SECOURS_MIN if mode == "secours" else ESPACEMENT_MIN
+        if ecart is not None and 0 <= ecart < seuil:
+            return f"dernier passage il y a {ecart:.0f} min (< {seuil} min, mode {mode})"
+    return None
+
 
 # ---------------------------------------------------------------------------
 # Configuration par défaut (surpassable via env)
@@ -418,6 +486,12 @@ def main():
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     state = load_state()
+
+    if os.environ.get("FORCE_RUN") != "1":
+        motif = motif_de_ne_pas_trader(state, mode=os.environ.get("RUN_MODE") or "principal")
+        if motif:
+            print(f"[SKIP] {motif} – rien à faire.")
+            return state
 
     # 1. Market data
     prices, source = get_market_data(BASKET)
