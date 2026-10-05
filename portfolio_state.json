@@ -193,114 +193,119 @@
       "timestamp": "2026-10-05T08:20:02Z",
       "equity": 9638.98,
       "cash": 9638.98
+    },
+    {
+      "timestamp": "2026-10-05T10:17:45Z",
+      "equity": 9638.98,
+      "cash": 9638.98
     }
   ],
-  "updated": "2026-10-05T08:20:02Z",
+  "updated": "2026-10-05T10:17:45Z",
   "market_source": "yfinance",
   "decision_engine": "gemini-3.8-flash",
   "last_decisions": {
-    "timestamp": "2026-10-05T08:20:02Z",
-    "strategy": "Shift to a 100% defensive cash stance by closing the deteriorating SU.PA position following its sharp technical breakdown, while remaining flat across all other CAC40 assets that remain entrenched in market-wide downtrends.",
-    "risk_check": "Liquidating SU.PA halts further portfolio drawdown against initial capital, returning the portfolio entirely to cash (€9,638.98) and keeping exposure well below the 25% single-ticker limit.",
+    "timestamp": "2026-10-05T10:17:45Z",
+    "strategy": "Maintain 100% cash position as all monitored CAC40 tickers are trading below their 20-day moving averages with depressed momentum indicators.",
+    "risk_check": "Zero equity exposure eliminates drawdown risk during broad market weakness while waiting for valid uptrend signals.",
     "decisions": [
       {
         "ticker": "CAC.PA",
         "action": "HOLD",
-        "confidence": 0.95,
-        "reason": "Price is below MA20 with RSI14 at 34.07 in an established downtrend, and as an unheld ETF, we remain flat.",
-        "max_position_pct": 0.0
+        "confidence": 0.85,
+        "reason": "Index is in a confirmed downtrend below MA20 with an RSI of 33.42, precluding new long entries.",
+        "max_position_pct": 0
       },
       {
         "ticker": "MC.PA",
         "action": "HOLD",
         "confidence": 0.9,
-        "reason": "Despite a minor daily uptick, price remains well below MA20 with an oversold RSI14 of 26.34, offering no valid entry signal.",
-        "max_position_pct": 0.0
+        "reason": "Severe downward momentum with price below all major moving averages and RSI at 21.4 warrants staying flat.",
+        "max_position_pct": 0
       },
       {
         "ticker": "TTE.PA",
         "action": "HOLD",
-        "confidence": 0.9,
-        "reason": "Trading below MA20 with RSI14 at 29.73 indicates ongoing weakness, keeping us on the sidelines until an uptrend confirms.",
-        "max_position_pct": 0.0
+        "confidence": 0.8,
+        "reason": "Positive daily bounce does not offset weak RSI of 32.24 and trading below MA20.",
+        "max_position_pct": 0
       },
       {
         "ticker": "AIR.PA",
         "action": "HOLD",
-        "confidence": 0.95,
-        "reason": "Negative daily return and price below MA20 and MA50 with RSI14 at 36.67 indicate a downtrend where no position should be opened.",
-        "max_position_pct": 0.0
+        "confidence": 0.85,
+        "reason": "Bearish momentum persists below MA20 and MA50 with low RSI of 35.67, disqualifying a buy.",
+        "max_position_pct": 0
       },
       {
         "ticker": "OR.PA",
         "action": "HOLD",
-        "confidence": 0.95,
-        "reason": "Price trades below MA20 with weak momentum (RSI14 at 41.81), requiring us to stay flat on this unheld name.",
-        "max_position_pct": 0.0
+        "confidence": 0.8,
+        "reason": "Price sits below MA20 with RSI under 45, failing to provide an uptrend breakout signal.",
+        "max_position_pct": 0
       },
       {
         "ticker": "BNP.PA",
         "action": "HOLD",
-        "confidence": 0.95,
-        "reason": "Severe downward momentum (-7.64% weekly return, RSI14 at 30.70) keeps price below MA20; staying flat as we hold no shares.",
-        "max_position_pct": 0.0
+        "confidence": 0.9,
+        "reason": "Steep recent selloff keeps price well below MA20 with RSI at 31.53, so remaining in cash is optimal.",
+        "max_position_pct": 0
       },
       {
         "ticker": "SAN.PA",
         "action": "HOLD",
-        "confidence": 0.9,
-        "reason": "Daily gain is insufficient to overcome the broader downtrend below MA20 with RSI14 at 35.38, warranting no action.",
-        "max_position_pct": 0.0
+        "confidence": 0.8,
+        "reason": "Minor daily recovery fails to clear MA20 resistance and RSI remains depressed at 37.57.",
+        "max_position_pct": 0
       },
       {
         "ticker": "SU.PA",
-        "action": "SELL",
-        "confidence": 0.9,
-        "reason": "Severe breakdown with an -8.71% daily drop slicing below MA20 and MA50 alongside RSI7 collapsing to 36.61 triggers an immediate risk-mitigation exit.",
-        "max_position_pct": 0.0
+        "action": "HOLD",
+        "confidence": 0.95,
+        "reason": "Sharp nearly 10% daily decline breaks below MA20 with elevated volatility, requiring sideline observation.",
+        "max_position_pct": 0
       }
     ]
   },
   "prices": {
     "CAC.PA": {
-      "last": 79.34,
-      "ret1d": -0.825,
-      "rsi14": 34.07
+      "last": 79.2,
+      "ret1d": -1.0,
+      "rsi14": 33.42
     },
     "MC.PA": {
-      "last": 381.65,
-      "ret1d": 0.819,
-      "rsi14": 26.34
+      "last": 377.85,
+      "ret1d": -0.185,
+      "rsi14": 21.4
     },
     "TTE.PA": {
-      "last": 74.96,
-      "ret1d": 0.672,
-      "rsi14": 29.73
+      "last": 75.38,
+      "ret1d": 1.236,
+      "rsi14": 32.24
     },
     "AIR.PA": {
-      "last": 189.1,
-      "ret1d": -0.106,
-      "rsi14": 36.67
+      "last": 188.5,
+      "ret1d": -0.423,
+      "rsi14": 35.67
     },
     "OR.PA": {
-      "last": 372.4,
-      "ret1d": -0.094,
-      "rsi14": 41.81
+      "last": 372.8,
+      "ret1d": 0.013,
+      "rsi14": 42.13
     },
     "BNP.PA": {
-      "last": 90.75,
-      "ret1d": -1.423,
-      "rsi14": 30.7
+      "last": 91.25,
+      "ret1d": -0.88,
+      "rsi14": 31.53
     },
     "SAN.PA": {
-      "last": 71.12,
-      "ret1d": 0.438,
-      "rsi14": 35.38
+      "last": 71.49,
+      "ret1d": 0.96,
+      "rsi14": 37.57
     },
     "SU.PA": {
-      "last": 276.6,
-      "ret1d": -8.713,
-      "rsi14": 50.85
+      "last": 273.05,
+      "ret1d": -9.884,
+      "rsi14": 48.6
     }
   }
 }
