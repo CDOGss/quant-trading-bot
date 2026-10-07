@@ -233,114 +233,119 @@
       "timestamp": "2026-10-07T08:18:02Z",
       "equity": 9638.98,
       "cash": 9638.98
+    },
+    {
+      "timestamp": "2026-10-07T10:18:03Z",
+      "equity": 9638.98,
+      "cash": 9638.98
     }
   ],
-  "updated": "2026-10-07T08:18:02Z",
+  "updated": "2026-10-07T10:18:03Z",
   "market_source": "yfinance",
   "decision_engine": "gemini-3.8-flash",
   "last_decisions": {
-    "timestamp": "2026-10-07T08:18:02Z",
-    "strategy": "100% cash preservation stance as broad French equities and the CAC 40 index remain in confirmed downtrends below their 20-day moving averages.",
-    "risk_check": "Zero capital deployed; waiting for clear trend reversal signals (price > MA20, RSI > 55) before initiating any positions up to the 25% single-asset limit.",
+    "timestamp": "2026-10-07T10:18:03Z",
+    "strategy": "Maintain a 100% cash defensive stance as all tracked French equities are currently trading below their 20-day moving averages in broad corrective phases.",
+    "risk_check": "Zero portfolio risk exposure maintained; no positions open and no buy criteria met, fully respecting capital preservation and the 25% single-asset limit.",
     "decisions": [
       {
         "ticker": "CAC.PA",
         "action": "HOLD",
         "confidence": 0.85,
-        "reason": "The index is in a persistent downtrend trading below its 20-day MA with RSI14 deep in oversold territory at 27.71.",
+        "reason": "The index is in a persistent downtrend trading well below its 20-day moving average with RSI below 30, requiring staying sidelined.",
         "max_position_pct": 0
       },
       {
         "ticker": "MC.PA",
         "action": "HOLD",
-        "confidence": 0.8,
-        "reason": "Despite a minor 1-day bounce, price is well below the MA20 and down over 11% this month, lacking buy conditions.",
+        "confidence": 0.9,
+        "reason": "LVMH remains in a strong bearish trend below all moving averages with RSI deeply depressed at 21.5, offering no buy trigger.",
         "max_position_pct": 0
       },
       {
         "ticker": "TTE.PA",
         "action": "HOLD",
-        "confidence": 0.85,
-        "reason": "Trading below MA20 with negative returns across multiple timeframes and RSI below 35, remaining on the sidelines.",
+        "confidence": 0.7,
+        "reason": "TotalEnergies trades below its 20-day moving average with RSI below 40 despite positive daily returns, lacking sufficient upside momentum.",
         "max_position_pct": 0
       },
       {
         "ticker": "AIR.PA",
         "action": "HOLD",
-        "confidence": 0.85,
-        "reason": "Negative momentum continues with price below all major moving averages and an oversold RSI of 29.47.",
+        "confidence": 0.8,
+        "reason": "Airbus exhibits negative momentum and is positioned below its 20-day and 200-day moving averages with an oversold RSI of 29.86.",
         "max_position_pct": 0
       },
       {
         "ticker": "OR.PA",
         "action": "HOLD",
         "confidence": 0.75,
-        "reason": "Hovering near its 200-day MA but trading beneath the MA20 with RSI under 45, showing insufficient bullish momentum.",
+        "reason": "L'Oreal is testing support near the 200-day moving average but remains below the 20-day average with RSI at 43.09, failing to meet buy rules.",
         "max_position_pct": 0
       },
       {
         "ticker": "BNP.PA",
         "action": "HOLD",
-        "confidence": 0.8,
-        "reason": "Oversold conditions persist below the MA20 with a 7.8% 1-month decline, keeping the portfolio flat.",
+        "confidence": 0.85,
+        "reason": "BNP Paribas dropped sharply with negative daily returns and trades beneath its short- and medium-term moving averages.",
         "max_position_pct": 0
       },
       {
         "ticker": "SAN.PA",
         "action": "HOLD",
-        "confidence": 0.75,
-        "reason": "A 1-day gain of 1.66% is insufficient to counter the broader downtrend below the 20-day and 50-day moving averages.",
+        "confidence": 0.7,
+        "reason": "Sanofi shows a minor daily rebound but remains submerged beneath its 20-day and 50-day moving averages with weak RSI.",
         "max_position_pct": 0
       },
       {
         "ticker": "SU.PA",
         "action": "HOLD",
         "confidence": 0.9,
-        "reason": "Sharp sell-off of over 5% intraday breaking below both MA20 and MA200 signals severe downside momentum.",
+        "reason": "Schneider Electric faces high volatility and a steep multi-week decline below its 20-day moving average with no reversal confirmation.",
         "max_position_pct": 0
       }
     ]
   },
   "prices": {
     "CAC.PA": {
-      "last": 79.09,
-      "ret1d": -0.24,
-      "rsi14": 27.71
+      "last": 78.88,
+      "ret1d": -0.505,
+      "rsi14": 26.89
     },
     "MC.PA": {
-      "last": 383.0,
-      "ret1d": 0.551,
-      "rsi14": 21.62
+      "last": 380.75,
+      "ret1d": -1.258,
+      "rsi14": 21.5
     },
     "TTE.PA": {
-      "last": 75.49,
-      "ret1d": -0.409,
-      "rsi14": 34.99
+      "last": 75.91,
+      "ret1d": 0.251,
+      "rsi14": 37.94
     },
     "AIR.PA": {
-      "last": 187.42,
-      "ret1d": -0.878,
-      "rsi14": 29.47
+      "last": 186.92,
+      "ret1d": -0.574,
+      "rsi14": 29.86
     },
     "OR.PA": {
-      "last": 373.9,
-      "ret1d": 0.12,
-      "rsi14": 42.57
+      "last": 372.85,
+      "ret1d": -0.201,
+      "rsi14": 43.09
     },
     "BNP.PA": {
-      "last": 93.26,
-      "ret1d": 0.539,
-      "rsi14": 33.79
+      "last": 92.88,
+      "ret1d": -2.324,
+      "rsi14": 31.48
     },
     "SAN.PA": {
-      "last": 71.15,
-      "ret1d": 1.657,
-      "rsi14": 36.78
+      "last": 71.12,
+      "ret1d": 0.722,
+      "rsi14": 31.45
     },
     "SU.PA": {
-      "last": 258.5,
-      "ret1d": -5.242,
-      "rsi14": 38.5
+      "last": 259.15,
+      "ret1d": -0.518,
+      "rsi14": 33.07
     }
   }
 }
