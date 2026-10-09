@@ -268,114 +268,119 @@
       "timestamp": "2026-10-08T14:18:21Z",
       "equity": 9638.98,
       "cash": 9638.98
+    },
+    {
+      "timestamp": "2026-10-09T08:18:11Z",
+      "equity": 9638.98,
+      "cash": 9638.98
     }
   ],
-  "updated": "2026-10-08T14:18:21Z",
+  "updated": "2026-10-09T08:18:11Z",
   "market_source": "yfinance",
   "decision_engine": "gemini-3.8-flash",
   "last_decisions": {
-    "timestamp": "2026-10-08T14:18:21Z",
-    "strategy": "Preserve 100% cash in defensive mode as broad French market and large caps trade in pronounced downtrends without confirmed momentum buy signals.",
-    "risk_check": "Zero capital deployed; portfolio risk is minimal with a 25% single-asset exposure ceiling enforced once entry conditions are met.",
+    "timestamp": "2026-10-09T08:18:11Z",
+    "strategy": "Preserve 100% cash allocation as the broader CAC40 universe is under pressure and no tickers meet quantitative buy criteria.",
+    "risk_check": "Zero market exposure active; capital preservation prioritized until clear momentum emerges above MA20 with RSI above 55.",
     "decisions": [
       {
         "ticker": "CAC.PA",
         "action": "HOLD",
         "confidence": 0.85,
-        "reason": "Deep downtrend below all moving averages with oversold RSI indicates broad market weakness, warranting staying flat.",
+        "reason": "Price is below all key moving averages with RSI deeply depressed at 30.18, failing uptrend criteria.",
         "max_position_pct": 0
       },
       {
         "ticker": "MC.PA",
         "action": "HOLD",
-        "confidence": 0.8,
-        "reason": "Trading significantly below MA20, MA50, and MA200 with weak momentum, avoiding entry during a downtrend.",
+        "confidence": 0.9,
+        "reason": "Persistent downtrend below MA20 and negative daily return with no existing position to sell.",
         "max_position_pct": 0
       },
       {
         "ticker": "TTE.PA",
         "action": "HOLD",
-        "confidence": 0.65,
-        "reason": "Price is hovering near MA20 with RSI14 within the neutral 45-55 range, requiring confirmation above RSI 55 before buying.",
+        "confidence": 0.75,
+        "reason": "Price remains below the 20-day moving average and RSI at 44.08 does not meet buy conditions.",
         "max_position_pct": 0
       },
       {
         "ticker": "AIR.PA",
         "action": "HOLD",
-        "confidence": 0.75,
-        "reason": "Price remains below the 20-day and 50-day moving averages with sub-40 RSI, signaling prevailing downward pressure.",
+        "confidence": 0.85,
+        "reason": "Trading below MA20 and MA50 with weak RSI at 35.67, confirming negative momentum.",
         "max_position_pct": 0
       },
       {
         "ticker": "OR.PA",
         "action": "HOLD",
         "confidence": 0.7,
-        "reason": "Trading below the 20-day moving average with negative daily return and neutral RSI, keeping capital sidelined.",
+        "reason": "Consolidating near MA20 within neutral range (RSI 53.53), below the 55 threshold required to buy.",
         "max_position_pct": 0
       },
       {
         "ticker": "BNP.PA",
         "action": "HOLD",
-        "confidence": 0.85,
-        "reason": "Sharp decline trading below MA20, MA50, and MA200 with negative daily momentum rules out long exposure.",
+        "confidence": 0.9,
+        "reason": "Sharp ongoing decline with price below MA20 and weak RSI at 31.89 keeps asset unbuyable.",
         "max_position_pct": 0
       },
       {
         "ticker": "SAN.PA",
         "action": "HOLD",
-        "confidence": 0.75,
-        "reason": "Persistent weakness below all major moving averages with RSI under 40 indicates continued bearish control.",
+        "confidence": 0.85,
+        "reason": "Underperforming below all major moving averages with sub-40 RSI offering no entry setup.",
         "max_position_pct": 0
       },
       {
         "ticker": "SU.PA",
         "action": "HOLD",
-        "confidence": 0.75,
-        "reason": "Daily rebound is insufficient against severe weekly losses and price remains well below the 20-day moving average.",
+        "confidence": 0.8,
+        "reason": "Single-day bounce remains well below MA20 following severe weekly drawdown with RSI under 40.",
         "max_position_pct": 0
       }
     ]
   },
   "prices": {
     "CAC.PA": {
-      "last": 78.48,
-      "ret1d": -1.444,
-      "rsi14": 22.47
+      "last": 78.9,
+      "ret1d": 0.394,
+      "rsi14": 30.18
     },
     "MC.PA": {
-      "last": 384.9,
-      "ret1d": -0.914,
-      "rsi14": 31.12
+      "last": 384.0,
+      "ret1d": -1.146,
+      "rsi14": 30.54
     },
     "TTE.PA": {
-      "last": 77.79,
-      "ret1d": 3.142,
-      "rsi14": 47.77
+      "last": 76.88,
+      "ret1d": 1.936,
+      "rsi14": 44.08
     },
     "AIR.PA": {
-      "last": 188.44,
-      "ret1d": 0.534,
-      "rsi14": 37.44
+      "last": 187.9,
+      "ret1d": 0.245,
+      "rsi14": 35.67
     },
     "OR.PA": {
-      "last": 373.15,
-      "ret1d": -0.334,
-      "rsi14": 47.08
+      "last": 379.85,
+      "ret1d": 1.456,
+      "rsi14": 53.53
     },
     "BNP.PA": {
-      "last": 89.61,
-      "ret1d": -1.958,
-      "rsi14": 30.98
+      "last": 90.2,
+      "ret1d": -1.313,
+      "rsi14": 31.89
     },
     "SAN.PA": {
-      "last": 71.5,
-      "ret1d": -0.432,
-      "rsi14": 38.36
+      "last": 71.69,
+      "ret1d": -0.167,
+      "rsi14": 39.03
     },
     "SU.PA": {
-      "last": 259.6,
-      "ret1d": 1.984,
-      "rsi14": 35.61
+      "last": 265.35,
+      "ret1d": 4.243,
+      "rsi14": 39.44
     }
   }
 }
