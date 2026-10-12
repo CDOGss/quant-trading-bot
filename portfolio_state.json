@@ -5,13 +5,13 @@
     "TTE.PA": {
       "shares": 30.701,
       "avg_price": 78.49,
-      "last_price": 78.92,
-      "market_value": 2422.92,
-      "pnl": 13.2,
+      "last_price": 79.33,
+      "market_value": 2435.51,
+      "pnl": 25.79,
       "opened": "2026-10-09T14:20:47Z"
     }
   },
-  "equity": 9652.18,
+  "equity": 9664.77,
   "trades": [
     {
       "timestamp": "2026-09-25T07:30:57Z",
@@ -322,89 +322,94 @@
       "timestamp": "2026-10-12T12:17:56Z",
       "equity": 9652.18,
       "cash": 7229.26
+    },
+    {
+      "timestamp": "2026-10-12T14:19:01Z",
+      "equity": 9664.77,
+      "cash": 7229.26
     }
   ],
-  "updated": "2026-10-12T12:17:56Z",
+  "updated": "2026-10-12T14:19:01Z",
   "market_source": "yfinance",
   "decision_engine": "gemini-3.8-flash",
   "last_decisions": {
-    "timestamp": "2026-10-12T12:17:56Z",
-    "strategy": "Maintain existing winning position in TTE.PA while preserving high cash reserves due to broad-based CAC40 technical weakness.",
-    "risk_check": "Single position exposure is restricted to the 25% equity limit with TTE.PA, maintaining 74.9% cash to safeguard capital.",
+    "timestamp": "2026-10-12T14:19:01Z",
+    "strategy": "Maintain existing winning position in TTE.PA while preserving roughly 75% in cash, as the broader French market remains under prevailing technical pressure below key moving averages.",
+    "risk_check": "TTE.PA is the sole active holding at approximately 25.2% of equity, adhering to the 25% single-stock ceiling; uninvested cash of €7,229.26 ensures ample liquidity and capital protection.",
     "decisions": [
       {
         "ticker": "CAC.PA",
         "action": "HOLD",
-        "confidence": 0.85,
-        "reason": "Price remains below the 20-day moving average and RSI14 is depressed at 27.54, signaling lack of buying momentum.",
-        "max_position_pct": 0
+        "confidence": 0.8,
+        "reason": "CAC.PA remains in a broad downtrend below its 20-day and 50-day moving averages with an oversold RSI of 26.82, keeping us on the sidelines.",
+        "max_position_pct": 25
       },
       {
         "ticker": "MC.PA",
         "action": "HOLD",
         "confidence": 0.85,
-        "reason": "Stock is in a macro downtrend below MA20, MA50, and MA200 with RSI14 well below the entry threshold.",
-        "max_position_pct": 0
+        "reason": "MC.PA is trading well below all key moving averages with a weak RSI of 30.47, confirming persistent downward momentum without a buy trigger.",
+        "max_position_pct": 25
       },
       {
         "ticker": "TTE.PA",
         "action": "HOLD",
-        "confidence": 0.9,
-        "reason": "Existing position remains in a strong uptrend above MA20 with RSI14 at 56.07 and position sizing at target capacity.",
-        "max_position_pct": 25.0
+        "confidence": 0.85,
+        "reason": "TTE.PA maintains a strong uptrend above its MA20 with RSI at 57.34, but current exposure already occupies the maximum 25% portfolio limit.",
+        "max_position_pct": 25
       },
       {
         "ticker": "AIR.PA",
         "action": "HOLD",
-        "confidence": 0.8,
-        "reason": "Price is below MA20 and RSI14 of 31.97 indicates ongoing weakness despite short-term bounce.",
-        "max_position_pct": 0
+        "confidence": 0.75,
+        "reason": "AIR.PA sits below its 20-day and 50-day moving averages with a depressed RSI of 31.97, indicating no clear technical entry signal.",
+        "max_position_pct": 25
       },
       {
         "ticker": "OR.PA",
         "action": "HOLD",
-        "confidence": 0.75,
-        "reason": "Price has crossed MA20 but RSI14 of 42.34 does not meet the strong uptrend threshold of 55 required for entry.",
-        "max_position_pct": 0
+        "confidence": 0.7,
+        "reason": "OR.PA is stabilizing near its 20-day MA but its RSI of 41.47 does not meet the strong uptrend threshold required for a new buy.",
+        "max_position_pct": 25
       },
       {
         "ticker": "BNP.PA",
         "action": "HOLD",
         "confidence": 0.85,
-        "reason": "Severe monthly decline and position below MA20 prevent any new long exposure.",
-        "max_position_pct": 0
+        "reason": "BNP.PA is in an active downtrend below its 20-day, 50-day, and 200-day moving averages with negative daily return and an RSI of 30.87.",
+        "max_position_pct": 25
       },
       {
         "ticker": "SAN.PA",
         "action": "HOLD",
-        "confidence": 0.8,
-        "reason": "Asset trades below all key moving averages with an RSI14 of 40.47, indicating insufficient momentum.",
-        "max_position_pct": 0
+        "confidence": 0.75,
+        "reason": "SAN.PA trades below its 20-day moving average with an RSI of 39.71, showing insufficient momentum to justify entering a position.",
+        "max_position_pct": 25
       },
       {
         "ticker": "SU.PA",
         "action": "HOLD",
         "confidence": 0.85,
-        "reason": "Negative daily performance and deep trading below MA20 keep the stock firmly in a downtrend.",
-        "max_position_pct": 0
+        "reason": "SU.PA is falling below its 200-day MA with high volatility and an RSI of 33.54, presenting an unfavorable risk-reward profile.",
+        "max_position_pct": 25
       }
     ]
   },
   "prices": {
     "CAC.PA": {
-      "last": 79.26,
-      "ret1d": 0.38,
-      "rsi14": 27.54
+      "last": 79.19,
+      "ret1d": 0.291,
+      "rsi14": 26.82
     },
     "MC.PA": {
-      "last": 383.4,
-      "ret1d": 0.895,
-      "rsi14": 31.24
+      "last": 382.85,
+      "ret1d": 0.75,
+      "rsi14": 30.47
     },
     "TTE.PA": {
-      "last": 78.92,
-      "ret1d": 0.497,
-      "rsi14": 56.07
+      "last": 79.33,
+      "ret1d": 1.019,
+      "rsi14": 57.34
     },
     "AIR.PA": {
       "last": 188.08,
@@ -412,24 +417,24 @@
       "rsi14": 31.97
     },
     "OR.PA": {
-      "last": 382.75,
-      "ret1d": 0.407,
-      "rsi14": 42.34
+      "last": 382.1,
+      "ret1d": 0.236,
+      "rsi14": 41.47
     },
     "BNP.PA": {
-      "last": 90.29,
-      "ret1d": 0.378,
-      "rsi14": 32.14
+      "last": 89.82,
+      "ret1d": -0.145,
+      "rsi14": 30.87
     },
     "SAN.PA": {
-      "last": 72.11,
-      "ret1d": 0.825,
-      "rsi14": 40.47
+      "last": 71.96,
+      "ret1d": 0.615,
+      "rsi14": 39.71
     },
     "SU.PA": {
-      "last": 266.1,
-      "ret1d": -0.113,
-      "rsi14": 33.71
+      "last": 265.65,
+      "ret1d": -0.282,
+      "rsi14": 33.54
     }
   }
 }
