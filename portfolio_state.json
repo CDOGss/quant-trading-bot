@@ -1,17 +1,25 @@
 {
   "initial_capital": 10000.0,
-  "cash": 7229.26,
+  "cash": 4808.86,
   "holdings": {
     "TTE.PA": {
       "shares": 30.701,
       "avg_price": 78.49,
-      "last_price": 79.57,
-      "market_value": 2442.88,
-      "pnl": 33.16,
+      "last_price": 79.92,
+      "market_value": 2453.62,
+      "pnl": 43.9,
       "opened": "2026-10-09T14:20:47Z"
+    },
+    "OR.PA": {
+      "shares": 6.18,
+      "avg_price": 391.65,
+      "last_price": 391.65,
+      "market_value": 2420.4,
+      "pnl": 0.0,
+      "opened": "2026-10-14T08:18:01Z"
     }
   },
-  "equity": 9672.14,
+  "equity": 9682.88,
   "trades": [
     {
       "timestamp": "2026-09-25T07:30:57Z",
@@ -85,6 +93,16 @@
       "amount": 2409.72,
       "confidence": 0.8,
       "reason": "Strong uptrend confirmed with price above MA20, MA50, and MA200, positive 1-day return of 1.17%, and RSI7 at 73.13 showing strong momentum."
+    },
+    {
+      "timestamp": "2026-10-14T08:18:01Z",
+      "ticker": "OR.PA",
+      "action": "BUY",
+      "shares": 6.18,
+      "price": 391.65,
+      "amount": 2420.4,
+      "confidence": 0.85,
+      "reason": "L'Oréal demonstrates a strong uptrend above MA20, MA50, and MA200 with an RSI of 62.68 and positive daily returns."
     }
   ],
   "history": [
@@ -347,114 +365,119 @@
       "timestamp": "2026-10-13T14:18:05Z",
       "equity": 9672.14,
       "cash": 7229.26
+    },
+    {
+      "timestamp": "2026-10-14T08:18:01Z",
+      "equity": 9682.88,
+      "cash": 4808.86
     }
   ],
-  "updated": "2026-10-13T14:18:05Z",
+  "updated": "2026-10-14T08:18:01Z",
   "market_source": "yfinance",
   "decision_engine": "gemini-3.8-flash",
   "last_decisions": {
-    "timestamp": "2026-10-13T14:18:05Z",
-    "strategy": "Maintain conservative defensive stance given widespread CAC40 index and large cap weakness, holding the sole outperforming energy winner (TTE.PA) while keeping substantial cash reserves.",
-    "risk_check": "Single-ticker exposure for TTE.PA is at approximately 25% of total equity, adhering to the 25% maximum limit, with €7,229.26 (74.7%) preserved in cash.",
+    "timestamp": "2026-10-14T08:18:01Z",
+    "strategy": "Maintain existing winning exposure in TotalEnergies and initiate a 25% allocation into L'Oréal on confirmed trend-following signals while keeping the remainder in cash.",
+    "risk_check": "Total equity exposure remains capped at ~50% across two non-correlated blue-chip names, well within the 25% single-name cap and preserving ample cash liquidity.",
     "decisions": [
       {
         "ticker": "CAC.PA",
         "action": "HOLD",
-        "confidence": 0.85,
-        "reason": "Index ETF trades below MA20 with RSI14 in oversold territory at 26.82, remaining flat until momentum improves.",
-        "max_position_pct": 25.0
+        "confidence": 0.75,
+        "reason": "The index ETF remains below its 20-day moving average with an RSI of 32.96, showing no breakout confirmation.",
+        "max_position_pct": 0
       },
       {
         "ticker": "MC.PA",
         "action": "HOLD",
-        "confidence": 0.85,
-        "reason": "Price is well below MA20 and MA50 with depressed RSI14 at 28.35, signaling no viable long setup.",
-        "max_position_pct": 25.0
+        "confidence": 0.7,
+        "reason": "Despite a positive daily return, price remains below the 20-day MA and RSI is under 45, confirming lack of trend strength.",
+        "max_position_pct": 0
       },
       {
         "ticker": "TTE.PA",
         "action": "HOLD",
-        "confidence": 0.9,
-        "reason": "Existing profitable position remains in a strong uptrend above MA20 with RSI14 at 58.05; letting the position ride.",
-        "max_position_pct": 25.0
+        "confidence": 0.85,
+        "reason": "The existing long position continues to trend solidly above the 20-day and 50-day moving averages with positive momentum.",
+        "max_position_pct": 25
       },
       {
         "ticker": "AIR.PA",
         "action": "HOLD",
         "confidence": 0.8,
-        "reason": "Persistent downtrend below all major moving averages and negative daily return warrant staying flat.",
-        "max_position_pct": 25.0
+        "reason": "Airbus remains in oversold territory below its 20-day and 200-day moving averages without reversal confirmation.",
+        "max_position_pct": 0
       },
       {
         "ticker": "OR.PA",
-        "action": "HOLD",
-        "confidence": 0.75,
-        "reason": "Price is rebounding above MA20 but RSI14 remains in the neutral consolidation range at 46.81, requiring confirmation before entry.",
-        "max_position_pct": 25.0
+        "action": "BUY",
+        "confidence": 0.85,
+        "reason": "L'Oréal demonstrates a strong uptrend above MA20, MA50, and MA200 with an RSI of 62.68 and positive daily returns.",
+        "max_position_pct": 25
       },
       {
         "ticker": "BNP.PA",
         "action": "HOLD",
         "confidence": 0.8,
-        "reason": "Significant 1-month drop and price below MA20 with RSI14 at 31.64 keep the stock in a bearish structure.",
-        "max_position_pct": 25.0
+        "reason": "Weak monthly return and a price well below moving averages keep BNP in an unfavorable entry setup.",
+        "max_position_pct": 0
       },
       {
         "ticker": "SAN.PA",
         "action": "HOLD",
-        "confidence": 0.8,
-        "reason": "Negative daily return and price below the 20-day moving average with RSI14 at 35.56 justify staying sidelined.",
-        "max_position_pct": 25.0
+        "confidence": 0.75,
+        "reason": "Negative daily return and sub-40 RSI indicate ongoing weakness beneath key resistance levels.",
+        "max_position_pct": 0
       },
       {
         "ticker": "SU.PA",
         "action": "HOLD",
-        "confidence": 0.85,
-        "reason": "Weak price action below MA20 and MA50 accompanied by RSI14 at 33.48 confirms prevailing downtrend.",
-        "max_position_pct": 25.0
+        "confidence": 0.8,
+        "reason": "Schneider Electric trades substantially below its 20-day MA with depressed RSI, signaling persistent downward pressure.",
+        "max_position_pct": 0
       }
     ]
   },
   "prices": {
     "CAC.PA": {
-      "last": 79.19,
-      "ret1d": 0.291,
-      "rsi14": 26.82
+      "last": 79.68,
+      "ret1d": 0.593,
+      "rsi14": 32.96
     },
     "MC.PA": {
-      "last": 381.4,
-      "ret1d": 0.368,
-      "rsi14": 28.35
+      "last": 389.75,
+      "ret1d": 1.365,
+      "rsi14": 42.96
     },
     "TTE.PA": {
-      "last": 79.57,
-      "ret1d": 1.324,
-      "rsi14": 58.05
+      "last": 79.92,
+      "ret1d": 1.19,
+      "rsi14": 54.57
     },
     "AIR.PA": {
-      "last": 186.74,
-      "ret1d": -0.564,
-      "rsi14": 29.16
+      "last": 187.6,
+      "ret1d": -0.287,
+      "rsi14": 29.68
     },
     "OR.PA": {
-      "last": 386.45,
-      "ret1d": 1.377,
-      "rsi14": 46.81
+      "last": 391.65,
+      "ret1d": 2.245,
+      "rsi14": 62.68
     },
     "BNP.PA": {
-      "last": 90.13,
-      "ret1d": 0.2,
-      "rsi14": 31.64
+      "last": 90.09,
+      "ret1d": 0.0,
+      "rsi14": 33.15
     },
     "SAN.PA": {
-      "last": 70.94,
-      "ret1d": -0.811,
-      "rsi14": 35.56
+      "last": 70.93,
+      "ret1d": -0.936,
+      "rsi14": 39.94
     },
     "SU.PA": {
-      "last": 265.5,
-      "ret1d": -0.338,
-      "rsi14": 33.48
+      "last": 264.45,
+      "ret1d": -0.339,
+      "rsi14": 33.71
     }
   }
 }
