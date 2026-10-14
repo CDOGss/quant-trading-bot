@@ -5,21 +5,21 @@
     "TTE.PA": {
       "shares": 30.701,
       "avg_price": 78.49,
-      "last_price": 79.92,
-      "market_value": 2453.62,
-      "pnl": 43.9,
+      "last_price": 79.91,
+      "market_value": 2453.32,
+      "pnl": 43.6,
       "opened": "2026-10-09T14:20:47Z"
     },
     "OR.PA": {
       "shares": 6.18,
       "avg_price": 391.65,
-      "last_price": 391.65,
-      "market_value": 2420.4,
-      "pnl": 0.0,
+      "last_price": 392.85,
+      "market_value": 2427.81,
+      "pnl": 7.42,
       "opened": "2026-10-14T08:18:01Z"
     }
   },
-  "equity": 9682.88,
+  "equity": 9689.99,
   "trades": [
     {
       "timestamp": "2026-09-25T07:30:57Z",
@@ -370,114 +370,119 @@
       "timestamp": "2026-10-14T08:18:01Z",
       "equity": 9682.88,
       "cash": 4808.86
+    },
+    {
+      "timestamp": "2026-10-14T10:17:59Z",
+      "equity": 9689.99,
+      "cash": 4808.86
     }
   ],
-  "updated": "2026-10-14T08:18:01Z",
+  "updated": "2026-10-14T10:17:59Z",
   "market_source": "yfinance",
   "decision_engine": "gemini-3.8-flash",
   "last_decisions": {
-    "timestamp": "2026-10-14T08:18:01Z",
-    "strategy": "Maintain existing winning exposure in TotalEnergies and initiate a 25% allocation into L'Oréal on confirmed trend-following signals while keeping the remainder in cash.",
-    "risk_check": "Total equity exposure remains capped at ~50% across two non-correlated blue-chip names, well within the 25% single-name cap and preserving ample cash liquidity.",
+    "timestamp": "2026-10-14T10:17:59Z",
+    "strategy": "Maintain existing winning positions in OR.PA and TTE.PA while keeping remaining cash in reserve until broader CAC40 names reclaim their MA20 with positive momentum.",
+    "risk_check": "Total equity exposure stands at approximately 50.4% across two uncorrelated leaders, well within the 25% single-name cap and preserving a healthy 49.6% cash buffer.",
     "decisions": [
       {
         "ticker": "CAC.PA",
         "action": "HOLD",
-        "confidence": 0.75,
-        "reason": "The index ETF remains below its 20-day moving average with an RSI of 32.96, showing no breakout confirmation.",
+        "confidence": 0.8,
+        "reason": "Price remains below the 20-day moving average with an oversold RSI of 33.97, showing no confirmed trend reversal.",
         "max_position_pct": 0
       },
       {
         "ticker": "MC.PA",
         "action": "HOLD",
-        "confidence": 0.7,
-        "reason": "Despite a positive daily return, price remains below the 20-day MA and RSI is under 45, confirming lack of trend strength.",
+        "confidence": 0.75,
+        "reason": "Price is below the MA20 with weak momentum (RSI14 at 42.18), failing to satisfy buy conditions.",
         "max_position_pct": 0
       },
       {
         "ticker": "TTE.PA",
         "action": "HOLD",
         "confidence": 0.85,
-        "reason": "The existing long position continues to trend solidly above the 20-day and 50-day moving averages with positive momentum.",
+        "reason": "Position is profitable and trading above key moving averages with neutral RSI, warranting continued holding.",
         "max_position_pct": 25
       },
       {
         "ticker": "AIR.PA",
         "action": "HOLD",
         "confidence": 0.8,
-        "reason": "Airbus remains in oversold territory below its 20-day and 200-day moving averages without reversal confirmation.",
+        "reason": "Downtrend intact with price below MA20 and low RSI of 32.69; insufficient setup for entry.",
         "max_position_pct": 0
       },
       {
         "ticker": "OR.PA",
-        "action": "BUY",
-        "confidence": 0.85,
-        "reason": "L'Oréal demonstrates a strong uptrend above MA20, MA50, and MA200 with an RSI of 62.68 and positive daily returns.",
+        "action": "HOLD",
+        "confidence": 0.9,
+        "reason": "Strong uptrend with price above MA20 and RSI at 60.0; holding existing position at full 25% allocation capacity.",
         "max_position_pct": 25
       },
       {
         "ticker": "BNP.PA",
         "action": "HOLD",
-        "confidence": 0.8,
-        "reason": "Weak monthly return and a price well below moving averages keep BNP in an unfavorable entry setup.",
+        "confidence": 0.85,
+        "reason": "Bearish trend confirmed by negative daily return, price well below MA20, and deep oversold RSI of 28.33.",
         "max_position_pct": 0
       },
       {
         "ticker": "SAN.PA",
         "action": "HOLD",
         "confidence": 0.75,
-        "reason": "Negative daily return and sub-40 RSI indicate ongoing weakness beneath key resistance levels.",
+        "reason": "Trading below all key moving averages with subdued momentum (RSI14 at 44.49), maintaining sidelines.",
         "max_position_pct": 0
       },
       {
         "ticker": "SU.PA",
         "action": "HOLD",
         "confidence": 0.8,
-        "reason": "Schneider Electric trades substantially below its 20-day MA with depressed RSI, signaling persistent downward pressure.",
+        "reason": "Trading below MA20 and MA50 with low RSI of 35.51; wait for clear momentum confirmation before initiating.",
         "max_position_pct": 0
       }
     ]
   },
   "prices": {
     "CAC.PA": {
-      "last": 79.68,
-      "ret1d": 0.593,
-      "rsi14": 32.96
+      "last": 79.79,
+      "ret1d": 0.732,
+      "rsi14": 33.97
     },
     "MC.PA": {
-      "last": 389.75,
-      "ret1d": 1.365,
-      "rsi14": 42.96
+      "last": 389.15,
+      "ret1d": 1.328,
+      "rsi14": 42.18
     },
     "TTE.PA": {
-      "last": 79.92,
-      "ret1d": 1.19,
-      "rsi14": 54.57
+      "last": 79.91,
+      "ret1d": 0.025,
+      "rsi14": 49.13
     },
     "AIR.PA": {
-      "last": 187.6,
-      "ret1d": -0.287,
-      "rsi14": 29.68
+      "last": 187.54,
+      "ret1d": 0.558,
+      "rsi14": 32.69
     },
     "OR.PA": {
-      "last": 391.65,
-      "ret1d": 2.245,
-      "rsi14": 62.68
+      "last": 392.85,
+      "ret1d": 1.472,
+      "rsi14": 60.0
     },
     "BNP.PA": {
       "last": 90.09,
-      "ret1d": 0.0,
-      "rsi14": 33.15
+      "ret1d": -0.155,
+      "rsi14": 28.33
     },
     "SAN.PA": {
-      "last": 70.93,
-      "ret1d": -0.936,
-      "rsi14": 39.94
+      "last": 70.97,
+      "ret1d": 0.325,
+      "rsi14": 44.49
     },
     "SU.PA": {
-      "last": 264.45,
-      "ret1d": -0.339,
-      "rsi14": 33.71
+      "last": 264.95,
+      "ret1d": 0.208,
+      "rsi14": 35.51
     }
   }
 }
