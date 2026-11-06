@@ -1,41 +1,33 @@
 {
   "initial_capital": 10000.0,
-  "cash": 0.02,
+  "cash": 2414.04,
   "holdings": {
-    "TTE.PA": {
-      "shares": 30.701,
-      "avg_price": 78.49,
-      "last_price": 79.2,
-      "market_value": 2431.52,
-      "pnl": 21.8,
-      "opened": "2026-10-09T14:20:47Z"
-    },
     "OR.PA": {
       "shares": 6.18,
       "avg_price": 391.65,
-      "last_price": 444.4,
-      "market_value": 2746.39,
-      "pnl": 326.0,
+      "last_price": 445.7,
+      "market_value": 2754.43,
+      "pnl": 334.03,
       "opened": "2026-10-14T08:18:01Z"
     },
     "AIR.PA": {
       "shares": 12.408,
       "avg_price": 196.58,
-      "last_price": 196.0,
-      "market_value": 2431.97,
-      "pnl": -7.2,
+      "last_price": 196.56,
+      "market_value": 2438.92,
+      "pnl": -0.25,
       "opened": "2026-10-16T08:17:36Z"
     },
     "SAN.PA": {
       "shares": 31.537,
       "avg_price": 73.96,
-      "last_price": 81.91,
-      "market_value": 2583.2,
-      "pnl": 250.72,
+      "last_price": 82.21,
+      "market_value": 2592.66,
+      "pnl": 260.18,
       "opened": "2026-10-22T14:17:41Z"
     }
   },
-  "equity": 10193.1,
+  "equity": 10200.05,
   "trades": [
     {
       "timestamp": "2026-09-25T07:30:57Z",
@@ -160,6 +152,17 @@
       "amount": 2332.48,
       "confidence": 0.7,
       "reason": "Uptrend: RSI14 64.87 > 55, price above MA20, +0.53% today"
+    },
+    {
+      "timestamp": "2026-11-06T13:18:08Z",
+      "ticker": "TTE.PA",
+      "action": "SELL",
+      "shares": 30.701,
+      "price": 78.63,
+      "amount": 2414.02,
+      "pnl": 4.3,
+      "confidence": 0.9,
+      "reason": "TotalEnergies has entered a downtrend below its 20-day MA with RSI under 45 and negative momentum."
     }
   ],
   "history": [
@@ -767,114 +770,119 @@
       "timestamp": "2026-11-06T11:18:13Z",
       "equity": 10193.1,
       "cash": 0.02
+    },
+    {
+      "timestamp": "2026-11-06T13:18:08Z",
+      "equity": 10200.05,
+      "cash": 2414.04
     }
   ],
-  "updated": "2026-11-06T11:18:13Z",
+  "updated": "2026-11-06T13:18:08Z",
   "market_source": "yfinance",
   "decision_engine": "gemini-3.8-flash",
   "last_decisions": {
-    "timestamp": "2026-11-06T11:18:13Z",
-    "strategy": "Maintain all existing long positions during a broad market pullback as trends remain intact and zero cash is available for new entries.",
-    "risk_check": "All 4 active holdings remain evenly weighted around 24-27% of equity with no exposure to downtrending assets like SU.PA.",
+    "timestamp": "2026-11-06T13:18:08Z",
+    "strategy": "Liquidate weakened energy exposure in TTE.PA while maintaining high-conviction momentum leaders in OR.PA and SAN.PA alongside range-bound AIR.PA.",
+    "risk_check": "Exiting TTE.PA restores cash reserves and eliminates downside risk on broken MA support; individual positions remain within the 25% equity limit.",
     "decisions": [
       {
         "ticker": "CAC.PA",
         "action": "HOLD",
-        "confidence": 0.85,
-        "reason": "Negative daily return disqualifies new entry despite price sitting above the 20-day moving average.",
-        "max_position_pct": 25
+        "confidence": 0.8,
+        "reason": "The index pulled back today with negative momentum, and no existing position is held.",
+        "max_position_pct": 0
       },
       {
         "ticker": "MC.PA",
         "action": "HOLD",
-        "confidence": 0.8,
-        "reason": "Not currently held and daily momentum is negative, preventing a buy signal under trend rules.",
-        "max_position_pct": 25
+        "confidence": 0.85,
+        "reason": "LVMH dropped nearly 4% today, disqualifying it from momentum buying criteria.",
+        "max_position_pct": 0
       },
       {
         "ticker": "TTE.PA",
-        "action": "HOLD",
-        "confidence": 0.7,
-        "reason": "RSI14 at 45.8 sits in the neutral range and price is testing MA50 support, warranting a hold.",
-        "max_position_pct": 25
+        "action": "SELL",
+        "confidence": 0.9,
+        "reason": "TotalEnergies has entered a downtrend below its 20-day MA with RSI under 45 and negative momentum.",
+        "max_position_pct": 0
       },
       {
         "ticker": "AIR.PA",
         "action": "HOLD",
-        "confidence": 0.85,
-        "reason": "Holding position as price stays above MA20 with neutral RSI14 indicating range-bound behavior.",
+        "confidence": 0.8,
+        "reason": "Airbus is consolidating in a neutral range around its 20-day moving average with an RSI near 53.",
         "max_position_pct": 25
       },
       {
         "ticker": "OR.PA",
         "action": "HOLD",
         "confidence": 0.85,
-        "reason": "Strong ongoing uptrend well above MA20 supports maintaining existing profitable position despite daily pullback.",
+        "reason": "L'Oreal retains robust long-term momentum well above key moving averages despite a single-day pullback.",
         "max_position_pct": 25
       },
       {
         "ticker": "BNP.PA",
         "action": "HOLD",
         "confidence": 0.75,
-        "reason": "Not currently held and negative daily return precludes initiating a new position without cash.",
-        "max_position_pct": 25
+        "reason": "BNP Paribas posted a negative daily return and is not held, warranting no entry.",
+        "max_position_pct": 0
       },
       {
         "ticker": "SAN.PA",
         "action": "HOLD",
         "confidence": 0.85,
-        "reason": "Strong uptrend remains firmly intact above all key moving averages, supporting continued holding.",
+        "reason": "Sanofi remains comfortably above its 20, 50, and 200-day moving averages in an intact bull trend.",
         "max_position_pct": 25
       },
       {
         "ticker": "SU.PA",
         "action": "HOLD",
-        "confidence": 0.95,
-        "reason": "Severe downtrend below all moving averages and ticker is not held, so remaining flat.",
+        "confidence": 0.9,
+        "reason": "Schneider Electric remains in a severe structural downtrend below all key moving averages.",
         "max_position_pct": 0
       }
     ]
   },
   "prices": {
     "CAC.PA": {
-      "last": 81.66,
-      "ret1d": -1.804,
-      "rsi14": 60.41
+      "last": 81.71,
+      "ret1d": -1.744,
+      "rsi14": 60.73
     },
     "MC.PA": {
-      "last": 403.75,
-      "ret1d": -3.559,
-      "rsi14": 59.81
+      "last": 402.25,
+      "ret1d": -3.917,
+      "rsi14": 58.56
     },
     "TTE.PA": {
-      "last": 79.2,
-      "ret1d": -1.859,
-      "rsi14": 45.8
+      "last": 78.63,
+      "ret1d": -2.565,
+      "rsi14": 44.21
     },
     "AIR.PA": {
-      "last": 196.0,
-      "ret1d": -1.448,
-      "rsi14": 52.06
+      "last": 196.56,
+      "ret1d": -1.167,
+      "rsi14": 52.79
     },
     "OR.PA": {
-      "last": 444.4,
-      "ret1d": -2.458,
-      "rsi14": 71.03
+      "last": 445.7,
+      "ret1d": -2.173,
+      "rsi14": 72.0
     },
     "BNP.PA": {
-      "last": 91.59,
-      "ret1d": -0.381,
-      "rsi14": 61.53
+      "last": 91.49,
+      "ret1d": -0.489,
+      "rsi14": 61.19
     },
     "SAN.PA": {
-      "last": 81.91,
-      "ret1d": -3.099,
-      "rsi14": 80.58
+      "last": 82.21,
+      "ret1d": -2.745,
+      "rsi14": 81.96
     },
     "SU.PA": {
-      "last": 226.1,
-      "ret1d": -0.768,
-      "rsi14": 32.19
+      "last": 226.55,
+      "ret1d": -0.571,
+      "rsi14": 32.39
     }
   }
 }
