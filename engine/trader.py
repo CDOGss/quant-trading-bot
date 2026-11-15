@@ -12,7 +12,7 @@ Architecture :
 Env (secrets / variables GitHub) :
   GEMINI_API_KEY          – clé API Gemini (https://aistudio.google.com/apikey)
                             absente → décisions par règles techniques
-  GEMINI_MODEL            – modèle Gemini (défaut: gemini-3.8-flash)
+  GEMINI_MODEL            – modèle Gemini (défaut: gemini-4-hydrogen)
   GEMINI_THINKING_LEVEL   – thinking level: low | medium | high (défaut: high)
   MAX_POSITION_SIZE       – % de l'equity max par position (défaut: 25)
   MIN_TRADE_SIZE          – volume min en € pour éviter le bruit (défaut: 100)
@@ -117,7 +117,7 @@ STATE_PATH = ROOT / "portfolio_state.json"
 MAX_POSITION_SIZE = env_int("MAX_POSITION_SIZE", 25)          # % de l'equity
 MIN_TRADE_SIZE    = env_float("MIN_TRADE_SIZE", 100.0)       # € min
 INITIAL_CAPITAL   = env_float("INITIAL_CAPITAL", 10000.0)    # €
-GEMINI_MODEL      = env_str("GEMINI_MODEL", "gemini-3.8-flash")
+GEMINI_MODEL      = env_str("GEMINI_MODEL", "gemini-4-hydrogen")
 THINKING_LEVEL    = env_str("GEMINI_THINKING_LEVEL", "high")
 
 # Symboles Yahoo Finance – les actions de Paris ont le suffixe ".PA"

@@ -65,7 +65,7 @@ jobs:
       - name: "Run Trading Engine"
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-3.8-flash' }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-4-hydrogen' }}
           GEMINI_THINKING_LEVEL: ${{ vars.GEMINI_THINKING_LEVEL || 'high' }}
           MAX_POSITION_SIZE: ${{ vars.MAX_POSITION_SIZE || '25' }}
           MIN_TRADE_SIZE: ${{ vars.MIN_TRADE_SIZE || '100' }}

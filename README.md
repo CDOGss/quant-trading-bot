@@ -50,7 +50,7 @@ newtrade/
 
 | Variable | Description |
 |--------|-------------|
-| `GEMINI_MODEL` | Modèle Gemini (défaut : `gemini-3.8-flash`) |
+| `GEMINI_MODEL` | Modèle Gemini (défaut : `gemini-4-hydrogen`) |
 | `GEMINI_THINKING_LEVEL` | `low` / `medium` / `high` (défaut : `high`) |
 | `MAX_POSITION_SIZE` | % de l'equity max par position (défaut : 25) |
 | `MIN_TRADE_SIZE` | Montant min d'un trade en € (défaut : 100) |
