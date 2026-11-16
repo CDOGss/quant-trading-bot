@@ -5,37 +5,37 @@
     "OR.PA": {
       "shares": 6.18,
       "avg_price": 391.65,
-      "last_price": 451.2,
-      "market_value": 2788.42,
-      "pnl": 368.02,
+      "last_price": 451.7,
+      "market_value": 2791.51,
+      "pnl": 371.11,
       "opened": "2026-10-14T08:18:01Z"
     },
     "AIR.PA": {
       "shares": 12.408,
       "avg_price": 196.58,
-      "last_price": 205.5,
-      "market_value": 2549.84,
-      "pnl": 110.68,
+      "last_price": 207.85,
+      "market_value": 2579.0,
+      "pnl": 139.84,
       "opened": "2026-10-16T08:17:36Z"
     },
     "SAN.PA": {
       "shares": 31.537,
       "avg_price": 73.96,
-      "last_price": 87.95,
-      "market_value": 2773.68,
-      "pnl": 441.2,
+      "last_price": 87.9,
+      "market_value": 2772.1,
+      "pnl": 439.63,
       "opened": "2026-10-22T14:17:41Z"
     },
     "CAC.PA": {
       "shares": 28.749,
       "avg_price": 82.75,
-      "last_price": 84.84,
-      "market_value": 2439.07,
-      "pnl": 60.09,
+      "last_price": 85.08,
+      "market_value": 2445.96,
+      "pnl": 66.99,
       "opened": "2026-11-09T09:18:20Z"
     }
   },
-  "equity": 10586.07,
+  "equity": 10623.63,
   "trades": [
     {
       "timestamp": "2026-09-25T07:30:57Z",
@@ -898,114 +898,119 @@
       "timestamp": "2026-11-13T15:18:19Z",
       "equity": 10586.07,
       "cash": 35.06
+    },
+    {
+      "timestamp": "2026-11-16T09:17:51Z",
+      "equity": 10623.63,
+      "cash": 35.06
     }
   ],
-  "updated": "2026-11-13T15:18:19Z",
+  "updated": "2026-11-16T09:17:51Z",
   "market_source": "yfinance",
-  "decision_engine": "gemini-3.8-flash",
+  "decision_engine": "gemini-4-hydrogen",
   "last_decisions": {
-    "timestamp": "2026-11-13T15:18:19Z",
-    "strategy": "Maintain fully invested long stance across existing winners while riding current bullish momentum across French large caps.",
-    "risk_check": "All 4 open positions are well above their MA20 with strong positive P&L; cash is nearly fully allocated at 99.7% equity utilization, preventing new buys.",
+    "timestamp": "2026-11-16T09:17:51Z",
+    "strategy": "Maintain full allocation across the four winning uptrend positions (OR.PA, AIR.PA, SAN.PA, CAC.PA) as none exhibit downtrend sell signals and cash reserves (€35.06) leave no capital for new entries.",
+    "risk_check": "Portfolio is ~99.7% invested across four positions near the 25% cap each (OR.PA and SAN.PA slightly above 25% due to price appreciation); no new buys are executed and all holdings maintain positive trend alignment above MA20.",
     "decisions": [
       {
         "ticker": "CAC.PA",
         "action": "HOLD",
-        "confidence": 0.85,
-        "reason": "Strong bullish momentum above all key moving averages warrants holding the profitable ETF position.",
-        "max_position_pct": 25.0
+        "confidence": 0.9,
+        "reason": "Already holding in a strong uptrend above MA20 with positive daily return and high RSI14 of 86.27.",
+        "max_position_pct": 25
       },
       {
         "ticker": "MC.PA",
         "action": "HOLD",
         "confidence": 0.75,
-        "reason": "Price sits below MA200 and available portfolio cash is insufficient to initiate a new position.",
-        "max_position_pct": 0.0
+        "reason": "Price is above MA20 with positive daily return, but remains below MA200 and insufficient cash (€35.06) prevents opening a new position.",
+        "max_position_pct": 25
       },
       {
         "ticker": "TTE.PA",
         "action": "HOLD",
         "confidence": 0.8,
-        "reason": "RSI at 42.97 indicates subdued momentum and lacks strong uptrend confirmation.",
-        "max_position_pct": 0.0
+        "reason": "RSI14 at 47.3 indicates range-bound momentum near MA20, warranting staying flat.",
+        "max_position_pct": 25
       },
       {
         "ticker": "AIR.PA",
         "action": "HOLD",
-        "confidence": 0.8,
-        "reason": "Remains in an established uptrend comfortably above the MA20 despite a single-day retracement.",
-        "max_position_pct": 25.0
+        "confidence": 0.9,
+        "reason": "Existing profitable position in a clear uptrend above all major moving averages with RSI14 at 66.55.",
+        "max_position_pct": 25
       },
       {
         "ticker": "OR.PA",
         "action": "HOLD",
         "confidence": 0.85,
-        "reason": "Healthy trend continuation supported by a positive daily return and price trading above MA20.",
-        "max_position_pct": 25.0
+        "reason": "Existing profitable position trading above MA20, MA50, and MA200 with RSI14 at 66.24.",
+        "max_position_pct": 25
       },
       {
         "ticker": "BNP.PA",
         "action": "HOLD",
-        "confidence": 0.7,
-        "reason": "Overextended RSI and negative daily return discourage opening a new position without cash reserves.",
-        "max_position_pct": 0.0
+        "confidence": 0.75,
+        "reason": "Despite strong uptrend momentum and RSI14 of 83.51, insufficient cash (€35.06) and full portfolio allocation prevent buying.",
+        "max_position_pct": 25
       },
       {
         "ticker": "SAN.PA",
         "action": "HOLD",
         "confidence": 0.85,
-        "reason": "Dominant uptrend well above the MA20 justifies riding the existing trend to maximize gains.",
-        "max_position_pct": 25.0
+        "reason": "Existing strong winner trading well above all moving averages with positive daily momentum.",
+        "max_position_pct": 25
       },
       {
         "ticker": "SU.PA",
         "action": "HOLD",
         "confidence": 0.8,
-        "reason": "Trading below MA50 and MA200 alongside negative daily return keeps this stock outside buy criteria.",
-        "max_position_pct": 0.0
+        "reason": "RSI14 at 49.75 indicates neutral range while trading below MA50 and MA200 with negative daily return.",
+        "max_position_pct": 25
       }
     ]
   },
   "prices": {
     "CAC.PA": {
-      "last": 84.84,
-      "ret1d": 0.13,
-      "rsi14": 86.67
+      "last": 85.08,
+      "ret1d": 0.283,
+      "rsi14": 86.27
     },
     "MC.PA": {
-      "last": 405.5,
-      "ret1d": 0.198,
-      "rsi14": 65.65
+      "last": 404.95,
+      "ret1d": 0.372,
+      "rsi14": 63.19
     },
     "TTE.PA": {
-      "last": 81.85,
-      "ret1d": 1.513,
-      "rsi14": 42.97
+      "last": 82.26,
+      "ret1d": 0.11,
+      "rsi14": 47.3
     },
     "AIR.PA": {
-      "last": 205.5,
-      "ret1d": -1.321,
-      "rsi14": 63.08
+      "last": 207.85,
+      "ret1d": 0.581,
+      "rsi14": 66.55
     },
     "OR.PA": {
-      "last": 451.2,
-      "ret1d": 0.973,
-      "rsi14": 60.4
+      "last": 451.7,
+      "ret1d": 0.111,
+      "rsi14": 66.24
     },
     "BNP.PA": {
-      "last": 95.51,
-      "ret1d": -0.178,
-      "rsi14": 84.34
+      "last": 95.94,
+      "ret1d": 0.387,
+      "rsi14": 83.51
     },
     "SAN.PA": {
-      "last": 87.95,
-      "ret1d": -0.034,
-      "rsi14": 94.54
+      "last": 87.9,
+      "ret1d": 0.342,
+      "rsi14": 92.25
     },
     "SU.PA": {
-      "last": 243.1,
-      "ret1d": -0.694,
-      "rsi14": 56.58
+      "last": 242.45,
+      "ret1d": -0.411,
+      "rsi14": 49.75
     }
   }
 }
