@@ -5,37 +5,37 @@
     "OR.PA": {
       "shares": 6.18,
       "avg_price": 391.65,
-      "last_price": 449.45,
-      "market_value": 2777.6,
-      "pnl": 357.2,
+      "last_price": 448.55,
+      "market_value": 2772.04,
+      "pnl": 351.64,
       "opened": "2026-10-14T08:18:01Z"
     },
     "AIR.PA": {
       "shares": 12.408,
       "avg_price": 196.58,
-      "last_price": 203.2,
-      "market_value": 2521.31,
-      "pnl": 82.14,
+      "last_price": 203.65,
+      "market_value": 2526.89,
+      "pnl": 87.72,
       "opened": "2026-10-16T08:17:36Z"
     },
     "SAN.PA": {
       "shares": 31.537,
       "avg_price": 73.96,
-      "last_price": 88.0,
-      "market_value": 2775.26,
-      "pnl": 442.78,
+      "last_price": 87.77,
+      "market_value": 2768.0,
+      "pnl": 435.53,
       "opened": "2026-10-22T14:17:41Z"
     },
     "CAC.PA": {
       "shares": 28.749,
       "avg_price": 82.75,
-      "last_price": 84.08,
-      "market_value": 2417.22,
-      "pnl": 38.24,
+      "last_price": 83.96,
+      "market_value": 2413.77,
+      "pnl": 34.79,
       "opened": "2026-11-09T09:18:20Z"
     }
   },
-  "equity": 10526.45,
+  "equity": 10515.76,
   "trades": [
     {
       "timestamp": "2026-09-25T07:30:57Z",
@@ -923,13 +923,18 @@
       "timestamp": "2026-11-17T09:17:39Z",
       "equity": 10526.45,
       "cash": 35.06
+    },
+    {
+      "timestamp": "2026-11-17T11:17:34Z",
+      "equity": 10515.76,
+      "cash": 35.06
     }
   ],
-  "updated": "2026-11-17T09:17:39Z",
+  "updated": "2026-11-17T11:17:34Z",
   "market_source": "yfinance",
   "decision_engine": "rules (gemini error)",
   "last_decisions": {
-    "timestamp": "2026-11-17T09:17:39Z",
+    "timestamp": "2026-11-17T11:17:34Z",
     "strategy": "Rule-based trend following (RSI14 + MA20)",
     "risk_check": "Max 25% of equity per position",
     "decisions": [
@@ -937,100 +942,100 @@
         "ticker": "CAC.PA",
         "action": "HOLD",
         "confidence": 0.5,
-        "reason": "No clear signal (RSI14 77.28)",
+        "reason": "No clear signal (RSI14 76.06)",
         "max_position_pct": 25
       },
       {
         "ticker": "MC.PA",
         "action": "HOLD",
         "confidence": 0.5,
-        "reason": "No clear signal (RSI14 63.6)",
+        "reason": "No clear signal (RSI14 56.76)",
         "max_position_pct": 25
       },
       {
         "ticker": "TTE.PA",
         "action": "HOLD",
         "confidence": 0.5,
-        "reason": "No clear signal (RSI14 43.93)",
+        "reason": "No clear signal (RSI14 45.45)",
         "max_position_pct": 25
       },
       {
         "ticker": "AIR.PA",
         "action": "HOLD",
         "confidence": 0.5,
-        "reason": "No clear signal (RSI14 61.98)",
+        "reason": "No clear signal (RSI14 62.58)",
         "max_position_pct": 25
       },
       {
         "ticker": "OR.PA",
         "action": "HOLD",
         "confidence": 0.5,
-        "reason": "No clear signal (RSI14 71.04)",
+        "reason": "No clear signal (RSI14 70.02)",
         "max_position_pct": 25
       },
       {
         "ticker": "BNP.PA",
         "action": "HOLD",
         "confidence": 0.5,
-        "reason": "No clear signal (RSI14 76.33)",
+        "reason": "No clear signal (RSI14 77.97)",
         "max_position_pct": 25
       },
       {
         "ticker": "SAN.PA",
         "action": "HOLD",
         "confidence": 0.5,
-        "reason": "No clear signal (RSI14 90.37)",
+        "reason": "No clear signal (RSI14 89.04)",
         "max_position_pct": 25
       },
       {
         "ticker": "SU.PA",
         "action": "HOLD",
         "confidence": 0.5,
-        "reason": "No clear signal (RSI14 42.99)",
+        "reason": "No clear signal (RSI14 44.01)",
         "max_position_pct": 25
       }
     ]
   },
   "prices": {
     "CAC.PA": {
-      "last": 84.08,
-      "ret1d": -0.896,
-      "rsi14": 77.28
+      "last": 83.96,
+      "ret1d": -0.815,
+      "rsi14": 76.06
     },
     "MC.PA": {
-      "last": 401.7,
-      "ret1d": -0.569,
-      "rsi14": 63.6
+      "last": 394.3,
+      "ret1d": -2.401,
+      "rsi14": 56.76
     },
     "TTE.PA": {
-      "last": 81.99,
-      "ret1d": 0.037,
-      "rsi14": 43.93
+      "last": 82.36,
+      "ret1d": 0.488,
+      "rsi14": 45.45
     },
     "AIR.PA": {
-      "last": 203.2,
-      "ret1d": -0.465,
-      "rsi14": 61.98
+      "last": 203.65,
+      "ret1d": -0.245,
+      "rsi14": 62.58
     },
     "OR.PA": {
-      "last": 449.45,
-      "ret1d": -0.156,
-      "rsi14": 71.04
+      "last": 448.55,
+      "ret1d": -0.355,
+      "rsi14": 70.02
     },
     "BNP.PA": {
-      "last": 94.5,
-      "ret1d": -0.985,
-      "rsi14": 76.33
+      "last": 94.79,
+      "ret1d": -0.681,
+      "rsi14": 77.97
     },
     "SAN.PA": {
-      "last": 88.0,
-      "ret1d": -0.362,
-      "rsi14": 90.37
+      "last": 87.77,
+      "ret1d": -0.623,
+      "rsi14": 89.04
     },
     "SU.PA": {
-      "last": 239.25,
-      "ret1d": -0.952,
-      "rsi14": 42.99
+      "last": 240.4,
+      "ret1d": -0.476,
+      "rsi14": 44.01
     }
   }
 }
