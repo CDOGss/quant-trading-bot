@@ -5,37 +5,37 @@
     "OR.PA": {
       "shares": 6.18,
       "avg_price": 391.65,
-      "last_price": 444.25,
-      "market_value": 2745.46,
-      "pnl": 325.07,
+      "last_price": 438.85,
+      "market_value": 2712.09,
+      "pnl": 291.7,
       "opened": "2026-10-14T08:18:01Z"
     },
     "AIR.PA": {
       "shares": 12.408,
       "avg_price": 196.58,
-      "last_price": 199.42,
-      "market_value": 2474.4,
-      "pnl": 35.24,
+      "last_price": 202.6,
+      "market_value": 2513.86,
+      "pnl": 74.7,
       "opened": "2026-10-16T08:17:36Z"
     },
     "SAN.PA": {
       "shares": 31.537,
       "avg_price": 73.96,
-      "last_price": 86.58,
-      "market_value": 2730.47,
-      "pnl": 398.0,
+      "last_price": 84.6,
+      "market_value": 2668.03,
+      "pnl": 335.55,
       "opened": "2026-10-22T14:17:41Z"
     },
     "CAC.PA": {
       "shares": 28.749,
       "avg_price": 82.75,
-      "last_price": 83.06,
-      "market_value": 2387.89,
-      "pnl": 8.91,
+      "last_price": 82.87,
+      "market_value": 2382.43,
+      "pnl": 3.45,
       "opened": "2026-11-09T09:18:20Z"
     }
   },
-  "equity": 10373.28,
+  "equity": 10311.47,
   "trades": [
     {
       "timestamp": "2026-09-25T07:30:57Z",
@@ -958,114 +958,119 @@
       "timestamp": "2026-11-18T15:17:38Z",
       "equity": 10373.28,
       "cash": 35.06
+    },
+    {
+      "timestamp": "2026-11-19T09:17:42Z",
+      "equity": 10311.47,
+      "cash": 35.06
     }
   ],
-  "updated": "2026-11-18T15:17:38Z",
+  "updated": "2026-11-19T09:17:42Z",
   "market_source": "yfinance",
-  "decision_engine": "rules (gemini error)",
+  "decision_engine": "gemini-4-hydrogen",
   "last_decisions": {
-    "timestamp": "2026-11-18T15:17:38Z",
-    "strategy": "Rule-based trend following (RSI14 + MA20)",
-    "risk_check": "Max 25% of equity per position",
+    "timestamp": "2026-11-19T09:17:42Z",
+    "strategy": "Maintain current fully invested allocation across OR.PA, AIR.PA, SAN.PA, and CAC.PA as all four holdings remain structurally healthy above their medium- and long-term moving averages.",
+    "risk_check": "Cash is minimal at 35.06 EUR and existing positions are evenly diversified near ~23-27% weights without triggering any strong downtrend sell signals; avoid new entries while liquidity is constrained.",
     "decisions": [
       {
         "ticker": "CAC.PA",
         "action": "HOLD",
-        "confidence": 0.5,
-        "reason": "No clear signal (RSI14 65.02)",
+        "confidence": 0.78,
+        "reason": "Held position remains in a broader uptrend above MA20, MA50, and MA200 with RSI14 at 63.49 despite a minor daily pullback.",
         "max_position_pct": 25
       },
       {
         "ticker": "MC.PA",
         "action": "HOLD",
-        "confidence": 0.5,
-        "reason": "No clear signal (RSI14 52.59)",
+        "confidence": 0.75,
+        "reason": "Price sits below MA20, MA50, and MA200 with RSI14 at 53.16 in neutral range, warranting staying flat.",
         "max_position_pct": 25
       },
       {
         "ticker": "TTE.PA",
         "action": "HOLD",
-        "confidence": 0.5,
-        "reason": "No clear signal (RSI14 35.57)",
+        "confidence": 0.85,
+        "reason": "Not currently held and trading below MA20 with weak momentum and RSI14 at 29.02, so staying flat avoids catching a falling knife.",
         "max_position_pct": 25
       },
       {
         "ticker": "AIR.PA",
         "action": "HOLD",
-        "confidence": 0.5,
-        "reason": "No clear signal (RSI14 53.32)",
+        "confidence": 0.88,
+        "reason": "Held position is in a strong uptrend above all major moving averages with positive daily return and RSI14 at 60.42.",
         "max_position_pct": 25
       },
       {
         "ticker": "OR.PA",
         "action": "HOLD",
-        "confidence": 0.5,
-        "reason": "No clear signal (RSI14 65.04)",
+        "confidence": 0.72,
+        "reason": "Held position has RSI14 at 51.62 in neutral territory and remains well above MA50 and MA200 despite dipping slightly under MA20.",
         "max_position_pct": 25
       },
       {
         "ticker": "BNP.PA",
         "action": "HOLD",
-        "confidence": 0.5,
-        "reason": "No clear signal (RSI14 64.65)",
+        "confidence": 0.7,
+        "reason": "Although trading above all moving averages with positive daily momentum, RSI14 is overbought at 75.26 and available cash is insufficient to open a meaningful position.",
         "max_position_pct": 25
       },
       {
         "ticker": "SAN.PA",
         "action": "HOLD",
-        "confidence": 0.5,
-        "reason": "No clear signal (RSI14 82.01)",
+        "confidence": 0.8,
+        "reason": "Held position remains firmly above MA20, MA50, and MA200 with RSI14 at 66.6 despite a short-term daily pullback.",
         "max_position_pct": 25
       },
       {
         "ticker": "SU.PA",
         "action": "HOLD",
-        "confidence": 0.5,
-        "reason": "No clear signal (RSI14 42.51)",
+        "confidence": 0.74,
+        "reason": "Price remains well below MA50 and MA200 with elevated 35.95 volatility, and available cash is too low to initiate a new position.",
         "max_position_pct": 25
       }
     ]
   },
   "prices": {
     "CAC.PA": {
-      "last": 83.06,
-      "ret1d": -0.18,
-      "rsi14": 65.02
+      "last": 82.87,
+      "ret1d": -0.409,
+      "rsi14": 63.49
     },
     "MC.PA": {
-      "last": 387.7,
-      "ret1d": -1.349,
-      "rsi14": 52.59
+      "last": 391.7,
+      "ret1d": 0.928,
+      "rsi14": 53.16
     },
     "TTE.PA": {
-      "last": 80.69,
-      "ret1d": -1.574,
-      "rsi14": 35.57
+      "last": 79.66,
+      "ret1d": -0.188,
+      "rsi14": 29.02
     },
     "AIR.PA": {
-      "last": 199.42,
-      "ret1d": -0.835,
-      "rsi14": 53.32
+      "last": 202.6,
+      "ret1d": 2.437,
+      "rsi14": 60.42
     },
     "OR.PA": {
-      "last": 444.25,
-      "ret1d": -0.47,
-      "rsi14": 65.04
+      "last": 438.85,
+      "ret1d": -0.948,
+      "rsi14": 51.62
     },
     "BNP.PA": {
-      "last": 92.24,
-      "ret1d": -1.684,
-      "rsi14": 64.65
+      "last": 93.37,
+      "ret1d": 1.489,
+      "rsi14": 75.26
     },
     "SAN.PA": {
-      "last": 86.58,
-      "ret1d": 0.023,
-      "rsi14": 82.01
+      "last": 84.6,
+      "ret1d": -1.913,
+      "rsi14": 66.6
     },
     "SU.PA": {
-      "last": 239.55,
-      "ret1d": 1.247,
-      "rsi14": 42.51
+      "last": 243.45,
+      "ret1d": 2.268,
+      "rsi14": 56.26
     }
   }
 }
