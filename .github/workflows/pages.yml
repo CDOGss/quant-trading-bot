@@ -31,7 +31,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
+      url: ${{ steps.deploy.outputs.page_url || steps.deploy2.outputs.page_url || steps.deploy3.outputs.page_url }}
     steps:
       - uses: actions/checkout@v7
         with:
@@ -50,6 +50,29 @@ jobs:
         with:
           path: .gh-pages/
 
+      # GitHub échoue régulièrement à ce stade (« Fetching artifact metadata failed »,
+      # « Deployment failed, try again later » : 6 déploiements sur 51 en novembre 2026).
+      # Ces erreurs sont passagères : on retente deux fois avant d'abandonner.
       - name: Deploy to GitHub Pages
         id: deploy
+        continue-on-error: true
+        uses: actions/deploy-pages@v5
+
+      - name: Pause avant 2e essai
+        if: steps.deploy.outcome == 'failure'
+        run: sleep 45
+
+      - name: Deploy to GitHub Pages (2e essai)
+        id: deploy2
+        if: steps.deploy.outcome == 'failure'
+        continue-on-error: true
+        uses: actions/deploy-pages@v5
+
+      - name: Pause avant 3e essai
+        if: steps.deploy2.outcome == 'failure'
+        run: sleep 90
+
+      - name: Deploy to GitHub Pages (3e essai)
+        id: deploy3
+        if: steps.deploy2.outcome == 'failure'
         uses: actions/deploy-pages@v5
